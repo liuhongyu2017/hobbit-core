@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/hobbit-bom/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-bom/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-core-auto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-core-auto/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-core-boot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-core-context/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-core-launch/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-core-log/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hobbit-core-tool/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

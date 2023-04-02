@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "hobbit.context",
+      "type": "org.hobbit.core.context.props.HobbitContextProperties",
+      "sourceType": "org.hobbit.core.context.props.HobbitContextProperties"
+    },
+    {
+      "name": "hobbit.context.headers",
+      "type": "org.hobbit.core.context.props.HobbitContextProperties$Headers",
+      "sourceType": "org.hobbit.core.context.props.HobbitContextProperties",
+      "sourceMethod": "public org.hobbit.core.context.props.HobbitContextProperties.Headers getHeaders() "
+    }
+  ],
+  "properties": [
+    {
+      "name": "hobbit.context.cross-headers",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "org.hobbit.core.context.props.HobbitContextProperties"
+    },
+    {
+      "name": "hobbit.context.headers.account-id",
+      "type": "java.lang.String",
+      "description": "用于 聚合层 向调用层传递用户信息 的请求头，默认：Hobbit-AccountId",
+      "sourceType": "org.hobbit.core.context.props.HobbitContextProperties$Headers"
+    },
+    {
+      "name": "hobbit.context.headers.allowed",
+      "type": "java.util.List<java.lang.String>",
+      "description": "自定义 RestTemplate 和 Feign 透传到下层的 Headers 名称列表",
+      "sourceType": "org.hobbit.core.context.props.HobbitContextProperties$Headers"
+    },
+    {
+      "name": "hobbit.context.headers.request-id",
+      "type": "java.lang.String",
+      "description": "请求id，默认：Hobbit-RequestId",
+      "sourceType": "org.hobbit.core.context.props.HobbitContextProperties$Headers"
+    },
+    {
+      "name": "hobbit.context.headers.tenant-id",
+      "type": "java.lang.String",
+      "description": "用于 聚合层 向调用层传递租户id 的请求头，默认：Hobbit-TenantId",
+      "sourceType": "org.hobbit.core.context.props.HobbitContextProperties$Headers"
+    }
+  ],
+  "hints": []
+}

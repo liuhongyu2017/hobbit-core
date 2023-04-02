@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.hobbit.platform</groupId>
+  <artifactId>hobbit-bom</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <description>hobbit 统一版本控制</description>
+  <properties>
+    <lombok.version>1.18.24</lombok.version>
+    <guava.version>31.1-jre</guava.version>
+    <springfox.swagger2.version>3.0.0</springfox.swagger2.version>
+    <swagger.annotations.version>1.5.20</swagger.annotations.version>
+    <protostuff.version>1.8.0</protostuff.version>
+    <mybatis.plus.version>3.5.2</mybatis.plus.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <!-- lombok -->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+      <!-- hobbit -->
+      <dependency>
+        <groupId>org.hobbit</groupId>
+        <artifactId>hobbit-core-auto</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hobbit</groupId>
+        <artifactId>hobbit-core-launch</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hobbit</groupId>
+        <artifactId>hobbit-core-tool</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hobbit</groupId>
+        <artifactId>hobbit-core-context</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+      </dependency>
+      <!-- google guava -->
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <!-- swagger -->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${springfox.swagger2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger.annotations.version}</version>
+      </dependency>
+      <!-- protostuff-->
+      <dependency>
+        <groupId>io.protostuff</groupId>
+        <artifactId>protostuff-api</artifactId>
+        <version>${protostuff.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.protostuff</groupId>
+        <artifactId>protostuff-core</artifactId>
+        <version>${protostuff.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.protostuff</groupId>
+        <artifactId>protostuff-runtime</artifactId>
+        <version>${protostuff.version}</version>
+      </dependency>
+      <!--Mybatis-->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus</artifactId>
+        <version>${mybatis.plus.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

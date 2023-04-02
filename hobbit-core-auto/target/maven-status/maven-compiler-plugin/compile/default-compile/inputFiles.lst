@@ -1,0 +1,16 @@
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\service\AutoService.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\service\AutoServiceProcessor.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\common\TypeHelper.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\common\AbstractHobbitProcessor.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\factories\FactoriesFiles.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\factories\AutoFactoriesProcessor.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\annotation\AutoRunListener.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\common\BootAutoType.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\common\Sets.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\common\MultiSetMap.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\annotation\AutoListener.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\annotation\AutoIgnore.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\service\ServicesFiles.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\annotation\AutoContextInitializer.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\annotation\AutoFailureAnalyzer.java
+D:\Projects\hobbit\hobbit-core\hobbit-core-auto\src\main\java\org\hobbit\core\auto\annotation\AutoEnvPostProcessor.java

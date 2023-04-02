@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "hobbit",
+      "type": "org.hobbit.core.launch.props.HobbitProperties",
+      "sourceType": "org.hobbit.core.launch.props.HobbitProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "hobbit.environment",
+      "type": "org.springframework.core.env.Environment",
+      "sourceType": "org.hobbit.core.launch.props.HobbitProperties"
+    },
+    {
+      "name": "hobbit.prop",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "装载自定义配置hobbit.prop.xxx",
+      "sourceType": "org.hobbit.core.launch.props.HobbitProperties"
+    }
+  ],
+  "hints": []
+}
