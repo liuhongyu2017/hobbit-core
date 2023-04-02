@@ -1,4 +1,0 @@
-org\hobbit\core\boot\config\HobbitBootAutoConfiguration.class
-org\hobbit\core\boot\config\HobbitExecutorConfiguration.class
-org\hobbit\core\boot\config\HobbitExecutorConfiguration$HobbitErrorHandler.class
-org\hobbit\core\boot\Main.class
