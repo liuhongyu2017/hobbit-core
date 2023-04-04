@@ -1,19 +1,3 @@
-/*
- *      Copyright (c) 2018-2028, Chill Zhuang All rights reserved.
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions are met:
- *
- *  Redistributions of source code must retain the above copyright notice,
- *  this list of conditions and the following disclaimer.
- *  Redistributions in binary form must reproduce the above copyright
- *  notice, this list of conditions and the following disclaimer in the
- *  documentation and/or other materials provided with the distribution.
- *  Neither the name of the dreamlu.net developer nor the names of its
- *  contributors may be used to endorse or promote products derived from
- *  this software without specific prior written permission.
- *  Author: Chill 庄骞 (smallchill@163.com)
- */
 package org.hobbit.core.tool.jackson;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -30,6 +14,7 @@ import com.fasterxml.jackson.databind.type.CollectionLikeType;
 import com.fasterxml.jackson.databind.type.MapType;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serial;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -199,7 +184,7 @@ public class JsonUtil {
       }
 
       List<Map<String, Object>> list = getInstance().readValue(content,
-          new TypeReference<List<Map<String, Object>>>() {
+          new TypeReference<>() {
           });
 
       List<T> result = new ArrayList<>();
@@ -559,7 +544,7 @@ public class JsonUtil {
       return Collections.emptyList();
     }
     try {
-      return getInstance().readValue(content, new TypeReference<List<Map<String, Object>>>() {
+      return getInstance().readValue(content, new TypeReference<>() {
       });
     } catch (IOException e) {
       throw Exceptions.unchecked(e);
@@ -641,6 +626,7 @@ public class JsonUtil {
     return getInstance().canSerialize(value.getClass());
   }
 
+  @SuppressWarnings("all")
   public static Map<String, Object> toMap(String content) {
     try {
       return getInstance().readValue(content, Map.class);
@@ -653,7 +639,7 @@ public class JsonUtil {
   public static <T> Map<String, T> toMap(String content, Class<T> valueTypeRef) {
     try {
       Map<String, Map<String, Object>> map = getInstance().readValue(content,
-          new TypeReference<Map<String, Map<String, Object>>>() {
+          new TypeReference<>() {
           });
       Map<String, T> result = new HashMap<>(16);
       for (Map.Entry<String, Map<String, Object>> entry : map.entrySet()) {
@@ -666,7 +652,7 @@ public class JsonUtil {
     return null;
   }
 
-  public static <T> T toPojo(Map fromValue, Class<T> toValueType) {
+  public static <T> T toPojo(Map<?, ?> fromValue, Class<T> toValueType) {
     return getInstance().convertValue(fromValue, toValueType);
   }
 
@@ -681,6 +667,7 @@ public class JsonUtil {
 
   private static class JacksonObjectMapper extends ObjectMapper {
 
+    @Serial
     private static final long serialVersionUID = 4288193147502386170L;
 
     private static final Locale CHINA = Locale.CHINA;
@@ -689,6 +676,7 @@ public class JsonUtil {
       super(src);
     }
 
+    @SuppressWarnings("all")
     public JacksonObjectMapper() {
       super();
       //设置地点为中国

@@ -210,15 +210,14 @@ public class AutoServiceProcessor extends AbstractHobbitProcessor {
   }
 
   /**
-   * Returns the {@link AnnotationMirror}'s map of {@link AnnotationValue} indexed by
-   * {@link ExecutableElement}, supplying default values from the annotation if the annotation
-   * property has not been set. This is equivalent to
-   * {@link Elements#getElementValuesWithDefaults(AnnotationMirror)} but can be called statically
-   * without an {@link Elements} instance.
+   * Returns the {@link AnnotationMirror}'s map of {@link AnnotationValue} indexed by {@link
+   * ExecutableElement}, supplying default values from the annotation if the annotation property has
+   * not been set. This is equivalent to {@link Elements#getElementValuesWithDefaults(AnnotationMirror)}
+   * but can be called statically without an {@link Elements} instance.
    *
    * <p>The iteration order of elements of the returned map will be the order in which the {@link
-   * ExecutableElement}s are defined in {@code annotation}'s
-   * {@linkplain AnnotationMirror#getAnnotationType() type}.
+   * ExecutableElement}s are defined in {@code annotation}'s {@linkplain
+   * AnnotationMirror#getAnnotationType() type}.
    *
    * @param annotation AnnotationMirror
    * @return AnnotationValue Map

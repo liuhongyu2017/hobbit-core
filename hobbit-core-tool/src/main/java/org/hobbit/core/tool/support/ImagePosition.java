@@ -1,19 +1,3 @@
-/*
- *      Copyright (c) 2018-2028, Chill Zhuang All rights reserved.
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions are met:
- *
- *  Redistributions of source code must retain the above copyright notice,
- *  this list of conditions and the following disclaimer.
- *  Redistributions in binary form must reproduce the above copyright
- *  notice, this list of conditions and the following disclaimer in the
- *  documentation and/or other materials provided with the distribution.
- *  Neither the name of the dreamlu.net developer nor the names of its
- *  contributors may be used to endorse or promote products derived from
- *  this software without specific prior written permission.
- *  Author: Chill 庄骞 (smallchill@163.com)
- */
 package org.hobbit.core.tool.support;
 
 /**
@@ -67,12 +51,12 @@ public class ImagePosition {
   /**
    * 图片中盒[左上角]的x坐标.
    */
-  private int boxPosX;
+  private final int boxPosX;
 
   /**
    * 图片中盒[左上角]的y坐标.
    */
-  private int boxPosY;
+  private final int boxPosY;
 
   /**
    * Instantiates a new image position.
@@ -85,26 +69,14 @@ public class ImagePosition {
    */
   public ImagePosition(int width, int height, int boxWidth, int boxHeight, int style) {
     switch (style & 7) {
-      case LEFT:
-        boxPosX = PADDING_HORI;
-        break;
-      case RIGHT:
-        boxPosX = width - boxWidth - PADDING_HORI;
-        break;
-      case CENTER:
-      default:
-        boxPosX = (width - boxWidth) / 2;
+      case LEFT -> boxPosX = PADDING_HORI;
+      case RIGHT -> boxPosX = width - boxWidth - PADDING_HORI;
+      default -> boxPosX = (width - boxWidth) / 2;
     }
     switch (style >> 3 << 3) {
-      case TOP:
-        boxPosY = PADDING_VERT;
-        break;
-      case MIDDLE:
-        boxPosY = (height - boxHeight) / 2;
-        break;
-      case BOTTOM:
-      default:
-        boxPosY = height - boxHeight - PADDING_VERT;
+      case TOP -> boxPosY = PADDING_VERT;
+      case MIDDLE -> boxPosY = (height - boxHeight) / 2;
+      default -> boxPosY = height - boxHeight - PADDING_VERT;
     }
   }
 

@@ -33,8 +33,8 @@ public class CollectionUtil extends CollectionUtils {
   }
 
   /**
-   * Return {@code true} if the supplied Map is not {@code null} or empty. Otherwise, return
-   * {@code false}.
+   * Return {@code true} if the supplied Map is not {@code null} or empty. Otherwise, return {@code
+   * false}.
    *
    * @param map the Map to check
    * @return whether the given Map is not empty
@@ -77,6 +77,7 @@ public class CollectionUtil extends CollectionUtils {
    * @param clazz 数组类
    * @return 新数组
    */
+  @SuppressWarnings("unchecked")
   public static <T> T[] concat(T[] one, T[] other, Class<T> clazz) {
     T[] target = (T[]) Array.newInstance(clazz, one.length + other.length);
     System.arraycopy(one, 0, target, 0, one.length);
@@ -133,7 +134,7 @@ public class CollectionUtil extends CollectionUtils {
   public static <E> List<E> toList(Iterable<E> elements) {
     Objects.requireNonNull(elements, "elements es is null.");
     if (elements instanceof Collection) {
-      return new ArrayList((Collection) elements);
+      return new ArrayList<>((Collection<E>) elements);
     }
     Iterator<E> iterator = elements.iterator();
     List<E> list = new ArrayList<>();
@@ -151,6 +152,7 @@ public class CollectionUtil extends CollectionUtils {
    * @param <V>        value
    * @return map 集合
    */
+  @SuppressWarnings("unchecked")
   public static <K, V> Map<K, V> toMap(Object... keysValues) {
     int kvLength = keysValues.length;
     if (kvLength % 2 != 0) {

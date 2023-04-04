@@ -92,8 +92,8 @@ public class Func {
    * </pre></blockquote>
    *
    * @param obj             the object reference to check for nullity
-   * @param messageSupplier supplier of the detail message to be used in the event that a
-   *                        {@code NullPointerException} is thrown
+   * @param messageSupplier supplier of the detail message to be used in the event that a {@code
+   *                        NullPointerException} is thrown
    * @param <T>             the type of the reference
    * @return {@code obj} if not {@code null}
    * @throws NullPointerException if {@code obj} is {@code null}
@@ -105,8 +105,8 @@ public class Func {
   /**
    * 判断对象是否为null
    * <p>
-   * This method exists to be used as a {@link java.util.function.Predicate},
-   * {@code filter($::isNull)}
+   * This method exists to be used as a {@link java.util.function.Predicate}, {@code
+   * filter($::isNull)}
    * </p>
    *
    * @param obj a reference to be checked against {@code null}
@@ -120,8 +120,8 @@ public class Func {
   /**
    * 判断对象是否 not null
    * <p>
-   * This method exists to be used as a {@link java.util.function.Predicate},
-   * {@code filter($::notNull)}
+   * This method exists to be used as a {@link java.util.function.Predicate}, {@code
+   * filter($::notNull)}
    * </p>
    *
    * @param obj a reference to be checked against {@code null}
@@ -662,13 +662,13 @@ public class Func {
    * @return 结果
    */
   public static Integer[] toIntArray(String split, String str) {
-    if (StringUtil.isEmpty(str)) {
+    if (ObjectUtil.isEmpty(str)) {
       return new Integer[]{};
     }
     String[] arr = str.split(split);
     final Integer[] ints = new Integer[arr.length];
     for (int i = 0; i < arr.length; i++) {
-      final Integer v = toInt(arr[i], 0);
+      final int v = toInt(arr[i], 0);
       ints[i] = v;
     }
     return ints;
@@ -739,13 +739,13 @@ public class Func {
    * @return 结果
    */
   public static Long[] toLongArray(String split, String str) {
-    if (StringUtil.isEmpty(str)) {
+    if (ObjectUtil.isEmpty(str)) {
       return new Long[]{};
     }
     String[] arr = str.split(split);
     final Long[] longs = new Long[arr.length];
     for (int i = 0; i < arr.length; i++) {
-      final Long v = toLong(arr[i], 0);
+      final long v = toLong(arr[i], 0);
       longs[i] = v;
     }
     return longs;

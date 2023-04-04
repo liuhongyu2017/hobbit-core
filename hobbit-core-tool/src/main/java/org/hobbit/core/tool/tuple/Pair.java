@@ -28,8 +28,8 @@ public class Pair<L, R> {
   }
 
   /**
-   * Constructs a pair with its left value being {@code left}, or returns an empty pair if
-   * {@code left} is null.
+   * Constructs a pair with its left value being {@code left}, or returns an empty pair if {@code
+   * left} is null.
    *
    * @return the constructed pair or an empty pair if {@code left} is null.
    */
@@ -42,8 +42,8 @@ public class Pair<L, R> {
   }
 
   /**
-   * Constructs a pair with its right value being {@code right}, or returns an empty pair if
-   * {@code right} is null.
+   * Constructs a pair with its right value being {@code right}, or returns an empty pair if {@code
+   * right} is null.
    *
    * @return the constructed pair or an empty pair if {@code right} is null.
    */

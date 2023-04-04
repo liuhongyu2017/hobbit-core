@@ -76,8 +76,8 @@ public class TypeHelper {
   }
 
   /**
-   * Return the interfaces that are <strong>directly</strong> implemented by the specified
-   * {@link Element} or an empty list if this {@code element} does not implement any interface.
+   * Return the interfaces that are <strong>directly</strong> implemented by the specified {@link
+   * Element} or an empty list if this {@code element} does not implement any interface.
    *
    * @param element Element
    * @return Element list

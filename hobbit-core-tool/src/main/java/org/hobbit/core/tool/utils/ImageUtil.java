@@ -1,19 +1,3 @@
-/*
- *      Copyright (c) 2018-2028, Chill Zhuang All rights reserved.
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions are met:
- *
- *  Redistributions of source code must retain the above copyright notice,
- *  this list of conditions and the following disclaimer.
- *  Redistributions in binary form must reproduce the above copyright
- *  notice, this list of conditions and the following disclaimer in the
- *  documentation and/or other materials provided with the distribution.
- *  Neither the name of the dreamlu.net developer nor the names of its
- *  contributors may be used to endorse or promote products derived from
- *  this software without specific prior written permission.
- *  Author: Chill 庄骞 (smallchill@163.com)
- */
 package org.hobbit.core.tool.utils;
 
 import java.awt.AlphaComposite;
@@ -53,7 +37,7 @@ public final class ImageUtil {
   /**
    * Logger for this class
    */
-  private static Logger LOGGER = LoggerFactory.getLogger(ImageUtil.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ImageUtil.class);
 
   /**
    * 默认输出图片类型
@@ -148,7 +132,7 @@ public final class ImageUtil {
    * @param scale  缩放比例
    * @param flag   缩放选择:true 放大; false 缩小;
    */
-  public final static void zoomScale(BufferedImage src, OutputStream output, String type,
+  public static void zoomScale(BufferedImage src, OutputStream output, String type,
       double scale, boolean flag) {
     try {
       // 得到源图宽
@@ -190,11 +174,12 @@ public final class ImageUtil {
    * @param bb        比例不对时是否需要补白：true为补白; false为不补白;
    * @param fillColor 填充色，null时为Color.WHITE
    */
-  public final static void zoomFixed(BufferedImage src, OutputStream output, String type,
+  public static void zoomFixed(BufferedImage src, OutputStream output, String type,
       int height, int width, boolean bb, Color fillColor) {
     try {
-      double ratio = 0.0;
-      Image itemp = src.getScaledInstance(width, height, BufferedImage.SCALE_SMOOTH);
+      double ratio;
+      src.getScaledInstance(width, height, BufferedImage.SCALE_SMOOTH);
+      BufferedImage itemp;
       // 计算比例
       if (src.getHeight() > src.getWidth()) {
         ratio = Integer.valueOf(height).doubleValue() / src.getHeight();
@@ -223,7 +208,7 @@ public final class ImageUtil {
         itemp = image;
       }
       // 输出为文件
-      ImageIO.write((BufferedImage) itemp, defaultString(type, DEFAULT_IMG_TYPE), output);
+      ImageIO.write(itemp, defaultString(type, DEFAULT_IMG_TYPE), output);
       // 关闭流
       output.close();
     } catch (IOException e) {
@@ -242,7 +227,7 @@ public final class ImageUtil {
    * @param width  目标切片宽度
    * @param height 目标切片高度
    */
-  public final static void crop(BufferedImage src, OutputStream output, String type, int x, int y,
+  public static void crop(BufferedImage src, OutputStream output, String type, int x, int y,
       int width, int height) {
     try {
       // 源图宽度
@@ -278,7 +263,7 @@ public final class ImageUtil {
    * @param prows 目标切片行数。默认2，必须是范围 [1, 20] 之内
    * @param pcols 目标切片列数。默认2，必须是范围 [1, 20] 之内
    */
-  public final static void sliceWithNumber(BufferedImage src, IMultiOutputStream mos, String type,
+  public static void sliceWithNumber(BufferedImage src, IMultiOutputStream mos, String type,
       int prows, int pcols) {
     try {
       int rows = prows <= 0 || prows > 20 ? 2 : prows;
@@ -328,7 +313,7 @@ public final class ImageUtil {
    * @param pdestWidth  目标切片宽度。默认200
    * @param pdestHeight 目标切片高度。默认150
    */
-  public final static void sliceWithSize(BufferedImage src, IMultiOutputStream mos, String type,
+  public static void sliceWithSize(BufferedImage src, IMultiOutputStream mos, String type,
       int pdestWidth, int pdestHeight) {
     try {
       int destWidth = pdestWidth <= 0 ? 200 : pdestWidth;
@@ -378,7 +363,7 @@ public final class ImageUtil {
    * @param formatName 包含格式非正式名称的 String：如JPG、JPEG、GIF等
    * @param output     目标图像地址
    */
-  public final static void convert(BufferedImage src, OutputStream output, String formatName) {
+  public static void convert(BufferedImage src, OutputStream output, String formatName) {
     try {
       // 输出为文件
       ImageIO.write(src, formatName, output);
@@ -396,7 +381,7 @@ public final class ImageUtil {
    * @param output 目标图像地址
    * @param type   类型
    */
-  public final static void gray(BufferedImage src, OutputStream output, String type) {
+  public static void gray(BufferedImage src, OutputStream output, String type) {
     try {
       ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
       ColorConvertOp op = new ColorConvertOp(cs, null);
@@ -424,7 +409,7 @@ public final class ImageUtil {
    * @param y        修正值
    * @param alpha    透明度：alpha 必须是范围 [0.0, 1.0] 之内（包含边界值）的一个浮点数字
    */
-  public final static void textStamp(BufferedImage src, OutputStream output, String type,
+  public static void textStamp(BufferedImage src, OutputStream output, String type,
       String text, Font font, Color color
       , int position, int x, int y, float alpha) {
     try {
@@ -443,7 +428,7 @@ public final class ImageUtil {
       g.drawString(text, boxPos.getX(x), boxPos.getY(y));
       g.dispose();
       // 输出为文件
-      ImageIO.write((BufferedImage) image, defaultString(type, DEFAULT_IMG_TYPE), output);
+      ImageIO.write(image, defaultString(type, DEFAULT_IMG_TYPE), output);
       // 关闭流
       output.close();
     } catch (Exception e) {
@@ -463,7 +448,7 @@ public final class ImageUtil {
    * @param y        修正值
    * @param alpha    透明度：alpha 必须是范围 [0.0, 1.0] 之内（包含边界值）的一个浮点数字
    */
-  public final static void imageStamp(BufferedImage src, OutputStream output, String type,
+  public static void imageStamp(BufferedImage src, OutputStream output, String type,
       BufferedImage stamp
       , int position, int x, int y, float alpha) {
     try {
@@ -482,7 +467,7 @@ public final class ImageUtil {
       // 水印文件结束
       g.dispose();
       // 输出为文件
-      ImageIO.write((BufferedImage) image, defaultString(type, DEFAULT_IMG_TYPE), output);
+      ImageIO.write(image, defaultString(type, DEFAULT_IMG_TYPE), output);
       // 关闭流
       output.close();
     } catch (Exception e) {
@@ -496,10 +481,10 @@ public final class ImageUtil {
    * @param text text
    * @return int
    */
-  public final static int calcTextWidth(String text) {
+  public static int calcTextWidth(String text) {
     int length = 0;
     for (int i = 0; i < text.length(); i++) {
-      if (new String(text.charAt(i) + "").getBytes().length > 1) {
+      if ((text.charAt(i) + "").getBytes().length > 1) {
         length += 2;
       } else {
         length += 1;
@@ -513,7 +498,6 @@ public final class ImageUtil {
    *
    * @param str        字符串
    * @param defaultStr 默认值
-   * @return
    */
   public static String defaultString(String str, String defaultStr) {
     return ((str == null) ? defaultStr : str);

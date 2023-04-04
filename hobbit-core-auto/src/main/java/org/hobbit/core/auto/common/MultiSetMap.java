@@ -11,6 +11,7 @@ import java.util.Set;
  * @version 1.0.0 2022/12/4
  */
 public class MultiSetMap<K, V> {
+
   private transient final Map<K, Set<V>> map;
 
   public MultiSetMap() {
@@ -38,10 +39,8 @@ public class MultiSetMap<K, V> {
       } else {
         throw new AssertionError("New set violated the set spec");
       }
-    } else if (set.add(value)) {
-      return true;
     } else {
-      return false;
+      return set.add(value);
     }
   }
 

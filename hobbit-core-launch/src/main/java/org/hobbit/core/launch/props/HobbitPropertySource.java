@@ -19,8 +19,8 @@ import org.springframework.core.Ordered;
 public @interface HobbitPropertySource {
 
   /**
-   * Indicate the resource location(s) of the properties file to be loaded. for example,
-   * {@code "classpath:/com/example/app.yml"}
+   * Indicate the resource location(s) of the properties file to be loaded. for example, {@code
+   * "classpath:/com/example/app.yml"}
    *
    * @return location(s)
    */

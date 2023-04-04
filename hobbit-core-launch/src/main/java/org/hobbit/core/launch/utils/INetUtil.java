@@ -5,7 +5,7 @@ import java.net.NetworkInterface;
 import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.Enumeration;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 /**
  * 网络相关工具
@@ -28,7 +28,7 @@ public class INetUtil {
       InetAddress address = InetAddress.getLocalHost();
       // 强制尽最大努力反向DNS查找
       hostname = address.getHostName();
-      if (StringUtils.isEmpty(hostname)) {
+      if (ObjectUtils.isEmpty(hostname)) {
         hostname = address.toString();
       }
     } catch (UnknownHostException ignore) {
@@ -48,7 +48,7 @@ public class INetUtil {
       InetAddress address = INetUtil.getLocalHostLANAddress();
       // force a best effort reverse DNS lookup
       hostAddress = address.getHostAddress();
-      if (StringUtils.isEmpty(hostAddress)) {
+      if (ObjectUtils.isEmpty(hostAddress)) {
         hostAddress = address.toString();
       }
     } catch (UnknownHostException ignore) {
@@ -66,8 +66,7 @@ public class INetUtil {
    * <p/>
    * This method is intended for use as a replacement of JDK method
    * <code>InetAddress.getLocalHost</code>, because that method is ambiguous on Linux systems.
-   * Linux
-   * systems enumerate the loopback network interface the same way as regular LAN network
+   * Linux systems enumerate the loopback network interface the same way as regular LAN network
    * interfaces, but the JDK <code>InetAddress.getLocalHost</code> method does not specify the
    * algorithm used to select the address returned under such circumstances, and will often return
    * the loopback address, which is not valid for network communication. Details
@@ -90,11 +89,11 @@ public class INetUtil {
     try {
       InetAddress candidateAddress = null;
       // Iterate all NICs (network interface cards)...
-      for (Enumeration ifaces = NetworkInterface.getNetworkInterfaces();
+      for (Enumeration<?> ifaces = NetworkInterface.getNetworkInterfaces();
           ifaces.hasMoreElements(); ) {
         NetworkInterface iface = (NetworkInterface) ifaces.nextElement();
         // Iterate all IP addresses assigned to each card...
-        for (Enumeration inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements(); ) {
+        for (Enumeration<?> inetAddrs = iface.getInetAddresses(); inetAddrs.hasMoreElements(); ) {
           InetAddress inetAddr = (InetAddress) inetAddrs.nextElement();
           if (!inetAddr.isLoopbackAddress()) {
 

@@ -4,6 +4,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.Optional;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hobbit.core.tool.constant.HobbitConstant;
 import org.hobbit.core.tool.utils.ObjectUtil;
 import org.springframework.lang.Nullable;
@@ -12,17 +16,21 @@ import org.springframework.lang.Nullable;
  * @author lhy
  * @version 1.0.0 2023/1/13
  */
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 @ApiModel(description = "返回信息")
-public record R<T>(
-    @ApiModelProperty(value = "状态", required = true)
-    int code,
-    @ApiModelProperty(value = "是否成功", required = true)
-    boolean success,
-    @ApiModelProperty(value = "承载数据")
-    T data,
-    @ApiModelProperty(value = "返回消息", required = true)
-    String msg
-) {
+public class R<T> {
+
+  @ApiModelProperty(value = "状态码", required = true)
+  private int code;
+  @ApiModelProperty(value = "是否成功", required = true)
+  private boolean success;
+  @ApiModelProperty(value = "承载数据")
+  private T data;
+  @ApiModelProperty(value = "返回消息", required = true)
+  private String msg;
 
   private R(IResultCode resultCode) {
     this(resultCode, null, resultCode.getMessage());
@@ -41,7 +49,10 @@ public record R<T>(
   }
 
   private R(int code, T data, String msg) {
-    this(code, ResultCode.SUCCESS.code == code, data, msg);
+    this.code = code;
+    this.data = data;
+    this.msg = msg;
+    this.success = ResultCode.SUCCESS.code == code;
   }
 
   /**

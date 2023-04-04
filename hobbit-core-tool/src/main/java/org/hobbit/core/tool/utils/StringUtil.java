@@ -147,7 +147,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
         && (end = message.indexOf(StringPool.RIGHT_BRACE, start)) != -1; ) {
       sb.append(message, cursor, start);
       String key = message.substring(start + 2, end);
-      Object value = params.get(StringUtil.trimWhitespace(key));
+      Object value = params.get(key.trim());
       sb.append(value == null ? StringPool.EMPTY : value);
       cursor = end + 1;
     }
@@ -612,7 +612,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @since 3.2.0
    */
   public static String getContainsStr(CharSequence str, CharSequence... testStrs) {
-    if (isEmpty(str) || Func.isEmpty(testStrs)) {
+    if (ObjectUtil.isEmpty(str) || Func.isEmpty(testStrs)) {
       return null;
     }
     for (CharSequence checkStr : testStrs) {
@@ -659,7 +659,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @since 3.2.0
    */
   public static String getContainsStrIgnoreCase(CharSequence str, CharSequence... testStrs) {
-    if (isEmpty(str) || Func.isEmpty(testStrs)) {
+    if (ObjectUtil.isEmpty(str) || Func.isEmpty(testStrs)) {
       return null;
     }
     for (CharSequence testStr : testStrs) {
@@ -682,7 +682,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @return 字串
    */
   public static String sub(CharSequence str, int fromIndex, int toIndex) {
-    if (isEmpty(str)) {
+    if (ObjectUtil.isEmpty(str)) {
       return StringPool.EMPTY;
     }
     int len = str.length();
@@ -744,7 +744,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    */
   public static String subBefore(CharSequence string, CharSequence separator,
       boolean isLastSeparator) {
-    if (isEmpty(string) || separator == null) {
+    if (ObjectUtil.isEmpty(string) || separator == null) {
       return null == string ? null : string.toString();
     }
 
@@ -761,8 +761,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
   }
 
   /**
-   * 截取分隔字符串之后的字符串，不包括分隔字符串<br> 如果给定的字符串为空串（null或""），返回原字符串<br>
-   * 如果分隔字符串为空串（null或""），则返回空串，如果分隔字符串未找到，返回空串
+   * 截取分隔字符串之后的字符串，不包括分隔字符串<br> 如果给定的字符串为空串（null或""），返回原字符串<br> 如果分隔字符串为空串（null或""），则返回空串，如果分隔字符串未找到，返回空串
    * <p>
    * 栗子：
    *
@@ -785,7 +784,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    */
   public static String subAfter(CharSequence string, CharSequence separator,
       boolean isLastSeparator) {
-    if (isEmpty(string)) {
+    if (ObjectUtil.isEmpty(string)) {
       return null == string ? null : string.toString();
     }
     if (separator == null) {
@@ -874,7 +873,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @return 切掉后的字符串，若前缀不是 preffix， 返回原字符串
    */
   public static String removePrefix(CharSequence str, CharSequence prefix) {
-    if (isEmpty(str) || isEmpty(prefix)) {
+    if (ObjectUtil.isEmpty(str) || ObjectUtil.isEmpty(prefix)) {
       return StringPool.EMPTY;
     }
 
@@ -893,7 +892,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @return 切掉后的字符串，若前缀不是 prefix， 返回原字符串
    */
   public static String removePrefixIgnoreCase(CharSequence str, CharSequence prefix) {
-    if (isEmpty(str) || isEmpty(prefix)) {
+    if (ObjectUtil.isEmpty(str) || ObjectUtil.isEmpty(prefix)) {
       return StringPool.EMPTY;
     }
 
@@ -912,7 +911,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @return 切掉后的字符串，若后缀不是 suffix， 返回原字符串
    */
   public static String removeSuffix(CharSequence str, CharSequence suffix) {
-    if (isEmpty(str) || isEmpty(suffix)) {
+    if (ObjectUtil.isEmpty(str) || ObjectUtil.isEmpty(suffix)) {
       return StringPool.EMPTY;
     }
 
@@ -942,7 +941,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @return 切掉后的字符串，若后缀不是 suffix， 返回原字符串
    */
   public static String removeSuffixIgnoreCase(CharSequence str, CharSequence suffix) {
-    if (isEmpty(str) || isEmpty(suffix)) {
+    if (ObjectUtil.isEmpty(str) || ObjectUtil.isEmpty(suffix)) {
       return StringPool.EMPTY;
     }
 
@@ -1004,7 +1003,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @return 切割后后剩余的后半部分字符串
    */
   public static String subSuf(CharSequence string, int fromIndex) {
-    if (isEmpty(string)) {
+    if (ObjectUtil.isEmpty(string)) {
       return null;
     }
     return sub(string, fromIndex, string.length());
@@ -1143,7 +1142,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
       return fromIndex;
     }
 
-    if (false == ignoreCase) {
+    if (!ignoreCase) {
       // 不忽略大小写调用JDK方法
       return str.toString().indexOf(searchStr.toString(), fromIndex);
     }
@@ -1206,7 +1205,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
       return fromIndex;
     }
 
-    if (false == ignoreCase) {
+    if (!ignoreCase) {
       // 不忽略大小写调用JDK方法
       return str.toString().lastIndexOf(searchStr.toString(), fromIndex);
     }
@@ -1388,6 +1387,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @param strs 初始字符串列表
    * @return {String}Builder对象
    */
+  @SuppressWarnings("all")
   public static StringBuilder appendBuilder(StringBuilder sb, CharSequence... strs) {
     for (CharSequence str : strs) {
       sb.append(str);
@@ -1459,7 +1459,7 @@ public class StringUtil extends org.springframework.util.StringUtils {
    */
   public static int count(CharSequence content, char charForSearch) {
     int count = 0;
-    if (isEmpty(content)) {
+    if (ObjectUtil.isEmpty(content)) {
       return 0;
     }
     int contentLength = content.length();

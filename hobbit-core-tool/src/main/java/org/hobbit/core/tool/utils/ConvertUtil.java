@@ -14,8 +14,8 @@ import org.springframework.lang.Nullable;
 public class ConvertUtil {
 
   /**
-   * Convenience operation for converting a source object to the specified targetType.
-   * {@link TypeDescriptor#forObject(Object)}.
+   * Convenience operation for converting a source object to the specified targetType. {@link
+   * TypeDescriptor#forObject(Object)}.
    *
    * @param source     the source object
    * @param targetType the target type
@@ -38,8 +38,8 @@ public class ConvertUtil {
 
   /**
    * Convenience operation for converting a source object to the specified targetType, where the
-   * target type is a descriptor that provides additional conversion context.
-   * {@link TypeDescriptor#forObject(Object)}.
+   * target type is a descriptor that provides additional conversion context. {@link
+   * TypeDescriptor#forObject(Object)}.
    *
    * @param source     the source object
    * @param sourceType the source type

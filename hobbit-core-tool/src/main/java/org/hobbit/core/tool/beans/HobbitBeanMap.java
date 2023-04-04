@@ -35,12 +35,12 @@ public abstract class HobbitBeanMap extends BeanMap {
   @Override
   public abstract HobbitBeanMap newInstance(Object o);
 
-  public static class BladeGenerator extends AbstractClassGenerator {
+  public static class BladeGenerator extends AbstractClassGenerator<Object> {
 
     private static final Source SOURCE = new Source(HobbitBeanMap.class.getName());
 
     private Object bean;
-    private Class beanClass;
+    private Class<?> beanClass;
     private int require;
 
     public BladeGenerator() {
@@ -49,9 +49,9 @@ public abstract class HobbitBeanMap extends BeanMap {
 
     /**
      * Set the bean that the generated map should reflect. The bean may be swapped out for another
-     * bean of the same type using {@link #setBean}. Calling this method overrides any value
-     * previously set using {@link #setBeanClass}. You must call either this method or
-     * {@link #setBeanClass} before {@link #create}.
+     * bean of the same type using {#setBean}. Calling this method overrides any value previously
+     * set using {@link #setBeanClass}. You must call either this method or {@link #setBeanClass}
+     * before {@link #create}.
      *
      * @param bean the initial bean
      */
@@ -64,11 +64,11 @@ public abstract class HobbitBeanMap extends BeanMap {
 
     /**
      * Set the class of the bean that the generated map should support. You must call either this
-     * method or {@link #setBeanClass} before {@link #create}.
+     * method or {#setBeanClass} before {@link #create}.
      *
      * @param beanClass the class of the bean
      */
-    public void setBeanClass(Class beanClass) {
+    public void setBeanClass(Class<?> beanClass) {
       this.beanClass = beanClass;
     }
 
@@ -108,7 +108,7 @@ public abstract class HobbitBeanMap extends BeanMap {
     }
 
     @Override
-    public void generateClass(ClassVisitor v) throws Exception {
+    public void generateClass(ClassVisitor v) {
       new HobbitBeanMapEmitter(v, getClassName(), beanClass, require);
     }
 

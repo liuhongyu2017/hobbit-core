@@ -26,6 +26,7 @@
         <module>hobbit-core-tool</module>
         <module>hobbit-core-boot</module>
         <module>hobbit-core-log</module>
+        <module>hobbit-core-auth</module>
     </modules>
 
     <parent>
