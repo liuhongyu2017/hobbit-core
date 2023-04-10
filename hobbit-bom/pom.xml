@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.hobbit.platform</groupId>
     <artifactId>hobbit-bom</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -16,7 +17,8 @@
         <springfox.swagger2.version>3.0.0</springfox.swagger2.version>
         <swagger.annotations.version>1.5.20</swagger.annotations.version>
         <protostuff.version>1.8.0</protostuff.version>
-        <mybatis.plus.version>3.5.2</mybatis.plus.version>
+        <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
+        <hobbit.jackson.version>1.4-RELEASE</hobbit.jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -84,8 +86,14 @@
             <!--Mybatis-->
             <dependency>
                 <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus</artifactId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
+            </dependency>
+            <!--hobbit-jackson-->
+            <dependency>
+                <groupId>org.hobbit</groupId>
+                <artifactId>jackson-desensitize</artifactId>
+                <version>${hobbit.jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
