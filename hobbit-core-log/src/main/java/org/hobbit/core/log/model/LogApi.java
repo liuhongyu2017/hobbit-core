@@ -1,7 +1,6 @@
 package org.hobbit.core.log.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serial;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,9 +12,6 @@ import lombok.EqualsAndHashCode;
 @TableName("hobbit_log_api")
 @EqualsAndHashCode(callSuper = true)
 public class LogApi extends LogAbstract {
-
-  @Serial
-  private static final long serialVersionUID = 1L;
 
   /**
    * 日志类型

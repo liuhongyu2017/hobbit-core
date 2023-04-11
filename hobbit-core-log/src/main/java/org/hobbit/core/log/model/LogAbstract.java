@@ -18,8 +18,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 public class LogAbstract implements Serializable {
 
-  protected static final long serialVersionUID = 1L;
-
   /**
    * 主键id
    */

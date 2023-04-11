@@ -14,9 +14,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class LogError extends LogAbstract {
 
-  @Serial
-  private static final long serialVersionUID = 1L;
-
   /**
    * 堆栈信息
    */
