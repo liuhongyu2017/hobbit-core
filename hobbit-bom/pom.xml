@@ -19,6 +19,11 @@
         <protostuff.version>1.8.0</protostuff.version>
         <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
         <hobbit.jackson.version>1.4-RELEASE</hobbit.jackson.version>
+        <spring.boot.client.admin.version>2.7.1</spring.boot.client.admin.version>
+        <alibaba.cloud.version>2021.0.4.0</alibaba.cloud.version>
+        <alibaba.seata.version>1.5.2</alibaba.seata.version>
+        <alibaba.nacos.version>2.1.0</alibaba.nacos.version>
+        <mica.version>3.0.1</mica.version>
     </properties>
 
     <dependencyManagement>
@@ -30,11 +35,6 @@
                 <version>${lombok.version}</version>
             </dependency>
             <!-- hobbit -->
-            <dependency>
-                <groupId>org.hobbit</groupId>
-                <artifactId>hobbit-core-auto</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-            </dependency>
             <dependency>
                 <groupId>org.hobbit</groupId>
                 <artifactId>hobbit-core-launch</artifactId>
@@ -53,6 +53,11 @@
             <dependency>
                 <groupId>org.hobbit</groupId>
                 <artifactId>hobbit-core-auth</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hobbit</groupId>
+                <artifactId>hobbit-core-loadbalancer</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <!-- google guava -->
@@ -99,6 +104,34 @@
                 <groupId>org.hobbit</groupId>
                 <artifactId>jackson-desensitize</artifactId>
                 <version>${hobbit.jackson.version}</version>
+            </dependency>
+            <!--SpringCloud-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring.boot.client.admin.version}</version>
+            </dependency>
+            <!--Alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${alibaba.nacos.version}</version>
+            </dependency>
+            <!--mica-->
+            <dependency>
+                <groupId>net.dreamlu</groupId>
+                <artifactId>mica-auto</artifactId>
+                <version>${mica.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

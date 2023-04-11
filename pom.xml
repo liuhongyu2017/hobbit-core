@@ -20,7 +20,6 @@
 
     <modules>
         <module>hobbit-bom</module>
-        <module>hobbit-core-auto</module>
         <module>hobbit-core-launch</module>
         <module>hobbit-core-context</module>
         <module>hobbit-core-tool</module>
@@ -28,6 +27,8 @@
         <module>hobbit-core-log</module>
         <module>hobbit-core-auth</module>
         <module>hobbit-core-log4j2</module>
+        <module>hobbit-core-cloud</module>
+        <module>hobbit-core-loadbalancer</module>
     </modules>
 
     <parent>

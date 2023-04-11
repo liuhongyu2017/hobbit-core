@@ -11,13 +11,17 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hobbit-core-log4j2</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>hobbit-core-cloud</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-launch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-context</artifactId>
         </dependency>
         <dependency>
             <groupId>net.dreamlu</groupId>
@@ -26,7 +30,15 @@
         </dependency>
         <dependency>
             <groupId>org.hobbit</groupId>
-            <artifactId>hobbit-core-launch</artifactId>
+            <artifactId>hobbit-core-loadbalancer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
     </dependencies>
 

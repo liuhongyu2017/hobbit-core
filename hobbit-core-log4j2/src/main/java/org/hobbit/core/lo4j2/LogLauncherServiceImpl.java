@@ -1,6 +1,6 @@
 package org.hobbit.core.lo4j2;
 
-import org.hobbit.core.auto.service.AutoService;
+import net.dreamlu.mica.auto.annotation.AutoService;
 import org.hobbit.core.launch.service.LauncherService;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
