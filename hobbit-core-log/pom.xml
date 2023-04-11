@@ -27,6 +27,23 @@
             <groupId>org.hobbit</groupId>
             <artifactId>hobbit-core-tool</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-auto</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-auth</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-launch</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
