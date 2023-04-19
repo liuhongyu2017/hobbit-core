@@ -1,8 +1,8 @@
 package org.hobbit.core.launch.server;
 
+import lombok.RequiredArgsConstructor;
 import org.hobbit.core.launch.utils.INetUtil;
 import org.springframework.beans.factory.SmartInitializingSingleton;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 
@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.web.ServerProperties;
  * @author lhy
  * @version 1.0.0 2022/12/4
  */
+@RequiredArgsConstructor
 @AutoConfiguration
 public class ServerInfo implements SmartInitializingSingleton {
 
@@ -22,11 +23,6 @@ public class ServerInfo implements SmartInitializingSingleton {
   private Integer port;
 
   private String ipWithPort;
-
-  @Autowired(required = false)
-  public ServerInfo(ServerProperties serverProperties) {
-    this.serverProperties = serverProperties;
-  }
 
   @Override
   public void afterSingletonsInstantiated() {

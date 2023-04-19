@@ -26,7 +26,6 @@
         <module>hobbit-core-boot</module>
         <module>hobbit-core-log</module>
         <module>hobbit-core-auth</module>
-        <module>hobbit-core-log4j2</module>
         <module>hobbit-core-cloud</module>
         <module>hobbit-core-loadbalancer</module>
     </modules>
@@ -95,6 +94,20 @@
                         <arg>-parameters</arg>
                     </compilerArgs>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

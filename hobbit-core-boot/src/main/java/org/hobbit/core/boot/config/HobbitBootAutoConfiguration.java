@@ -1,6 +1,6 @@
 package org.hobbit.core.boot.config;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hobbit.core.launch.props.HobbitPropertySource;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @Slf4j
 @AutoConfiguration
-@AllArgsConstructor
+@RequiredArgsConstructor
 @EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 @HobbitPropertySource(value = "classpath:/hobbit-boot.yml")
 public class HobbitBootAutoConfiguration {

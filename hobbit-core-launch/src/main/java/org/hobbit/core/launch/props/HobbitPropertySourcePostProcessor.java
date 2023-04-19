@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -49,6 +48,7 @@ public class HobbitPropertySourcePostProcessor implements BeanFactoryPostProcess
         getClass().getClassLoader());
   }
 
+  @SuppressWarnings("all")
   @Override
   public void postProcessBeanFactory(
       ConfigurableListableBeanFactory beanFactory) throws BeansException {
@@ -87,14 +87,13 @@ public class HobbitPropertySourcePostProcessor implements BeanFactoryPostProcess
     // 去重，排序
     List<PropertyFile> sortedPropertyList = propertyFileList.stream()
         .distinct()
-        .sorted()
-        .collect(Collectors.toList());
+        .sorted().toList();
     ConfigurableEnvironment environment = beanFactory.getBean(ConfigurableEnvironment.class);
     MutablePropertySources propertySources = environment.getPropertySources();
 
     // 只支持 activeProfiles，没有必要支持 spring.profiles.include。
     String[] activeProfiles = environment.getActiveProfiles();
-    ArrayList<PropertySource> propertySourceList = new ArrayList<>();
+    List<PropertySource> propertySourceList = new ArrayList<>();
     for (String profile : activeProfiles) {
       for (PropertyFile propertyFile : sortedPropertyList) {
         // 不加载 ActiveProfile 的配置文件
@@ -128,6 +127,7 @@ public class HobbitPropertySourcePostProcessor implements BeanFactoryPostProcess
     }
   }
 
+  @SuppressWarnings("all")
   private static void loadPropertySource(String location, Resource resource,
       PropertySourceLoader loader,
       List<PropertySource> sourceList) {
@@ -142,7 +142,7 @@ public class HobbitPropertySourcePostProcessor implements BeanFactoryPostProcess
   }
 
   @Override
-  public void afterPropertiesSet() throws Exception {
+  public void afterPropertiesSet() {
     log.info("HobbitPropertySourcePostProcessor init.");
   }
 
