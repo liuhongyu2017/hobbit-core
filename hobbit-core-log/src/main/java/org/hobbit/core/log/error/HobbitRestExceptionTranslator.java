@@ -44,6 +44,11 @@ public class HobbitRestExceptionTranslator {
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public R<?> handleError(ServiceException e) {
     log.error("业务异常", e);
+    if (properties.getErrorLog()) {
+      //发送服务异常事件
+      ErrorLogPublisher.publishEvent(e, UrlUtil.getPath(
+          Objects.requireNonNull(WebUtil.getRequest()).getRequestURI()));
+    }
     return R.fail(e.getResultCode(), e.getMessage());
   }
 
@@ -51,6 +56,11 @@ public class HobbitRestExceptionTranslator {
   @ResponseStatus(HttpStatus.UNAUTHORIZED)
   public R<?> handleError(SecureException e) {
     log.error("认证异常", e);
+    if (properties.getErrorLog()) {
+      //发送服务异常事件
+      ErrorLogPublisher.publishEvent(e, UrlUtil.getPath(
+          Objects.requireNonNull(WebUtil.getRequest()).getRequestURI()));
+    }
     return R.fail(e.getResultCode(), e.getMessage());
   }
 

@@ -35,7 +35,7 @@ public class LogAbstractUtil {
   }
 
   /**
-   * 向log中添加补齐其他的信息（eg：blade、server等）
+   * 向log中添加补齐其他的信息（eg：hobbit、server等）
    *
    * @param logAbstract      日志基础类
    * @param hobbitProperties 配置信息

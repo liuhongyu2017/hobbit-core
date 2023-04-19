@@ -27,4 +27,14 @@ public interface AppConstant {
    * 代码部署于 linux 上，工作默认为 mac 和 Windows
    */
   String OS_NAME_LINUX = "LINUX";
+
+  /**
+   * 应用名前缀
+   */
+  String APPLICATION_NAME_PREFIX = "hobbit-";
+
+  /**
+   * 日志模块名称
+   */
+  String APPLICATION_LOG_NAME = APPLICATION_NAME_PREFIX + "log";
 }

@@ -15,6 +15,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class HobbitRequestLogProperties {
 
   /**
+   * 前缀
+   */
+  public static final String PREFIX = "hobbit.log";
+  /**
    * 是否开启请求日志
    */
   private Boolean enabled = true;
