@@ -35,6 +35,6 @@ public class HobbitLogger implements InitializingBean {
 
   @Override
   public void afterPropertiesSet() {
-    log.info(serviceId + ": BladeLogger init success!");
+    log.info(serviceId + ": HobbitLogger init success!");
   }
 }
