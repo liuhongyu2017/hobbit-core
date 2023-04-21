@@ -18,7 +18,7 @@ import org.springframework.core.annotation.Order;
 public class HobbitPropertyConfiguration {
 
   @Bean
-  public HobbitPropertySourcePostProcessor bladePropertySourcePostProcessor() {
+  public HobbitPropertySourcePostProcessor hobbitPropertySourcePostProcessor() {
     return new HobbitPropertySourcePostProcessor();
   }
 }

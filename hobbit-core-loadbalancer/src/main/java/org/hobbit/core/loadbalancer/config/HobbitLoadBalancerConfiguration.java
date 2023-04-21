@@ -33,11 +33,11 @@ public class HobbitLoadBalancerConfiguration {
   public ReactorLoadBalancer<ServiceInstance> reactorServiceInstanceLoadBalancer(
       Environment environment,
       LoadBalancerClientFactory loadBalancerClientFactory,
-      HobbitLoadBalancerProperties bladeLoadBalancerProperties) {
+      HobbitLoadBalancerProperties hobbitLoadBalancerProperties) {
     String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
     return new GrayscaleLoadBalancer(
         loadBalancerClientFactory.getLazyProvider(name, ServiceInstanceListSupplier.class),
-        bladeLoadBalancerProperties);
+        hobbitLoadBalancerProperties);
   }
 
   @Bean

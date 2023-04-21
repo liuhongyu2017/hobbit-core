@@ -27,7 +27,7 @@ public class RequestConfiguration {
    * 全局过滤器
    */
   @Bean
-  public FilterRegistrationBean<HobbitRequestFilter> bladeFilterRegistration() {
+  public FilterRegistrationBean<HobbitRequestFilter> hobbitFilterRegistration() {
     FilterRegistrationBean<HobbitRequestFilter> registration = new FilterRegistrationBean<>();
     registration.setDispatcherTypes(DispatcherType.REQUEST);
     registration.setFilter(new HobbitRequestFilter(xssProperties));

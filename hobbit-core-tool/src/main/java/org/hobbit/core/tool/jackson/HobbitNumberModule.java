@@ -15,12 +15,12 @@ import java.math.BigInteger;
  *
  * @author L.cm
  */
-public class BladeNumberModule extends SimpleModule {
+public class HobbitNumberModule extends SimpleModule {
 
-  public static final BladeNumberModule INSTANCE = new BladeNumberModule();
+  public static final HobbitNumberModule INSTANCE = new HobbitNumberModule();
 
-  public BladeNumberModule() {
-    super(BladeNumberModule.class.getName());
+  public HobbitNumberModule() {
+    super(HobbitNumberModule.class.getName());
     // Long 和 BigInteger 采用定制的逻辑序列化，避免超过js的精度
     this.addSerializer(Long.class, BigNumberSerializer.instance);
     this.addSerializer(Long.TYPE, BigNumberSerializer.instance);

@@ -32,7 +32,7 @@ public class HobbitConversionService extends ApplicationConversionService {
    * Note: This method actually returns an {@link HobbitConversionService} instance. However, the
    * {@code ConversionService} signature has been preserved for binary compatibility.
    *
-   * @return the shared {@code BladeConversionService} instance (never{@code null})
+   * @return the shared {@code HobbitConversionService} instance (never{@code null})
    */
   public static GenericConversionService getInstance() {
     HobbitConversionService sharedInstance = HobbitConversionService.SHARED_INSTANCE;

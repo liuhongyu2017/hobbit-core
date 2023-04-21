@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.hobbit</groupId>
     <artifactId>hobbit-core</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -28,6 +29,8 @@
         <module>hobbit-core-auth</module>
         <module>hobbit-core-cloud</module>
         <module>hobbit-core-loadbalancer</module>
+        <module>hobbit-core-secure</module>
+        <module>hobbit-core-jwt</module>
     </modules>
 
     <parent>

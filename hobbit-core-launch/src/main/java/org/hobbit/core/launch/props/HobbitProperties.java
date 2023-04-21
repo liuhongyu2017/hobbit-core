@@ -184,7 +184,7 @@ public class HobbitProperties implements EnvironmentAware, EnvironmentCapable {
   public String getEnv() {
     Objects.requireNonNull(environment, "Spring boot 环境下 Environment 不可能为null");
     String env = environment.getProperty("hobbit.env");
-    Assert.notNull(env, "请使用 BladeApplication 启动...");
+    Assert.notNull(env, "请使用 HobbitApplication 启动...");
     return env;
   }
 
@@ -200,10 +200,11 @@ public class HobbitProperties implements EnvironmentAware, EnvironmentCapable {
   }
 
   @Override
-  public void setEnvironment(Environment environment) {
+  public void setEnvironment(@Nullable Environment environment) {
     this.environment = environment;
   }
 
+  @SuppressWarnings("all")
   @Override
   public Environment getEnvironment() {
     Objects.requireNonNull(environment, "Spring boot 环境下 Environment 不可能为null");

@@ -11,7 +11,7 @@ import org.hobbit.core.tool.utils.SpringUtil;
 import org.hobbit.core.tool.utils.WebUtil;
 
 /**
- * BLADE日志信息事件发送
+ * 日志信息事件发送
  *
  * @author lhy
  * @version 1.0.0 2023/4/11

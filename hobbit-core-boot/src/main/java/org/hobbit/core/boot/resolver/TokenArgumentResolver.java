@@ -1,6 +1,7 @@
 package org.hobbit.core.boot.resolver;
 
 import org.hobbit.core.auth.HobbitUser;
+import org.hobbit.core.auth.util.AuthUtil;
 import org.springframework.core.MethodParameter;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -44,7 +45,6 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
       @Nullable ModelAndViewContainer mavContainer, NativeWebRequest webRequest,
       @Nullable WebDataBinderFactory binderFactory
   ) {
-    // TODO 将 token 解析为 HobbitUser ，Controller 添加 HobbitUser 参数会自动注入
-    return new HobbitUser();
+    return AuthUtil.getUser();
   }
 }

@@ -21,7 +21,7 @@ public abstract class HobbitBeanMap extends BeanMap {
   }
 
   public static HobbitBeanMap create(Object bean) {
-    BladeGenerator gen = new BladeGenerator();
+    HobbitGenerator gen = new HobbitGenerator();
     gen.setBean(bean);
     return gen.create();
   }
@@ -30,12 +30,12 @@ public abstract class HobbitBeanMap extends BeanMap {
    * newInstance
    *
    * @param o Object
-   * @return BladeBeanMap
+   * @return HobbitBeanMap
    */
   @Override
   public abstract HobbitBeanMap newInstance(Object o);
 
-  public static class BladeGenerator extends AbstractClassGenerator<Object> {
+  public static class HobbitGenerator extends AbstractClassGenerator<Object> {
 
     private static final Source SOURCE = new Source(HobbitBeanMap.class.getName());
 
@@ -43,7 +43,7 @@ public abstract class HobbitBeanMap extends BeanMap {
     private Class<?> beanClass;
     private int require;
 
-    public BladeGenerator() {
+    public HobbitGenerator() {
       super(SOURCE);
     }
 
@@ -96,7 +96,7 @@ public abstract class HobbitBeanMap extends BeanMap {
      * Create a new instance of the <code>BeanMap</code>. An existing generated class will be reused
      * if possible.
      *
-     * @return {BladeBeanMap}
+     * @return {HobbitBeanMap}
      */
     public HobbitBeanMap create() {
       if (beanClass == null) {

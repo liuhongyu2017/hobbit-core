@@ -30,7 +30,7 @@ public class HobbitLogToolAutoConfiguration {
 
   private final ILogClient logService;
   private final ServerInfo serverInfo;
-  private final HobbitProperties bladeProperties;
+  private final HobbitProperties hobbitProperties;
 
   @Bean
   @ConditionalOnProperty(value = HobbitRequestLogProperties.PREFIX
@@ -43,27 +43,27 @@ public class HobbitLogToolAutoConfiguration {
   @ConditionalOnProperty(value = HobbitRequestLogProperties.PREFIX
       + "api.enabled", havingValue = "true", matchIfMissing = true)
   public ApiLogListener apiLogListener() {
-    return new ApiLogListener(logService, serverInfo, bladeProperties);
+    return new ApiLogListener(logService, serverInfo, hobbitProperties);
   }
 
   @Bean
   @ConditionalOnProperty(value = HobbitRequestLogProperties.PREFIX
       + "error.enabled", havingValue = "true", matchIfMissing = true)
   public ErrorLogListener errorEventListener() {
-    return new ErrorLogListener(logService, serverInfo, bladeProperties);
+    return new ErrorLogListener(logService, serverInfo, hobbitProperties);
   }
 
   @Bean
   @ConditionalOnProperty(value = HobbitRequestLogProperties.PREFIX
       + "usual.enabled", havingValue = "true", matchIfMissing = true)
-  public UsualLogListener bladeEventListener() {
-    return new UsualLogListener(logService, serverInfo, bladeProperties);
+  public UsualLogListener hobbitEventListener() {
+    return new UsualLogListener(logService, serverInfo, hobbitProperties);
   }
 
   @Bean
   @ConditionalOnProperty(value = HobbitRequestLogProperties.PREFIX
       + "usual.enabled", havingValue = "true", matchIfMissing = true)
-  public HobbitLogger bladeLogger() {
+  public HobbitLogger hobbitLogger() {
     return new HobbitLogger();
   }
 }

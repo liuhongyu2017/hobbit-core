@@ -25,7 +25,7 @@ public class ErrorLogListener {
 
   private final ILogClient logService;
   private final ServerInfo serverInfo;
-  private final HobbitProperties bladeProperties;
+  private final HobbitProperties hobbitProperties;
 
   @SuppressWarnings("all")
   @Async
@@ -34,7 +34,7 @@ public class ErrorLogListener {
   public void saveErrorLog(ErrorLogEvent event) {
     Map<String, Object> source = (Map<String, Object>) event.getSource();
     LogError logError = (LogError) source.get(EventConstant.EVENT_LOG);
-    LogAbstractUtil.addOtherInfoToLog(logError, bladeProperties, serverInfo);
+    LogAbstractUtil.addOtherInfoToLog(logError, hobbitProperties, serverInfo);
     logService.saveErrorLog(logError);
   }
 }

@@ -27,9 +27,9 @@ public class HobbitRequestFilter implements Filter {
       throws IOException, ServletException {
     String path = ((HttpServletRequest) request).getServletPath();
     if (!xssProperties.getEnabled() || isSkip(path)) {
-      HobbitHttpServletRequestWrapper bladeRequest =
+      HobbitHttpServletRequestWrapper hobbitRequest =
           new HobbitHttpServletRequestWrapper((HttpServletRequest) request);
-      chain.doFilter(bladeRequest, response);
+      chain.doFilter(hobbitRequest, response);
     } else {
       XssHttpServletRequestWrapper xssRequest =
           new XssHttpServletRequestWrapper((HttpServletRequest) request);

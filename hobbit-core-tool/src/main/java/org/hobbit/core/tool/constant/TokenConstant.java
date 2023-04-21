@@ -28,7 +28,7 @@ public interface TokenConstant {
   String CLIENT_ID = "client_id";
   String DETAIL = "detail";
   String LICENSE = "license";
-  String LICENSE_NAME = "powered by bladex";
+  String LICENSE_NAME = "powered by hobbit";
   String DEFAULT_AVATAR = "";
   Integer AUTH_LENGTH = 7;
 

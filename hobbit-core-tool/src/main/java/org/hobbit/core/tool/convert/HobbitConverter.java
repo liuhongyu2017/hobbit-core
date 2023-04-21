@@ -33,7 +33,7 @@ public class HobbitConverter implements Converter {
    *
    * @param value     源对象属性
    * @param target    目标对象属性类
-   * @param fieldName 目标的field名，原为 set 方法名，BladeBeanCopier 里做了更改
+   * @param fieldName 目标的field名，原为 set 方法名，HobbitBeanCopier 里做了更改
    * @return {Object}
    */
   @Override
@@ -58,7 +58,7 @@ public class HobbitConverter implements Converter {
         return ConvertUtil.convert(value, sourceDescriptor, targetDescriptor);
       }
     } catch (Throwable e) {
-      log.warn("BladeConverter error", e);
+      log.warn("HobbitConverter error", e);
       return null;
     }
   }

@@ -53,7 +53,7 @@ public class MappingApiJackson2HttpMessageConverter extends
     ObjectMapper writeObjectMapper = readObjectMapper.copy();
     // 大数字 转 字符串
     if (Boolean.TRUE.equals(properties.getBigNumToString())) {
-      writeObjectMapper.registerModules(BladeNumberModule.INSTANCE);
+      writeObjectMapper.registerModules(HobbitNumberModule.INSTANCE);
     }
     // null 处理
     if (Boolean.TRUE.equals(properties.getNullToEmpty())) {

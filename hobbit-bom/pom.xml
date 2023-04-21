@@ -26,6 +26,7 @@
         <mica.version>3.0.1</mica.version>
         <logback.version>6.2</logback.version>
         <spring.cloud.openfeign.version>4.0.2</spring.cloud.openfeign.version>
+        <jsonwebtoken.jjwt.version>0.11.2</jsonwebtoken.jjwt.version>
     </properties>
 
     <dependencyManagement>
@@ -70,6 +71,21 @@
             <dependency>
                 <groupId>org.hobbit</groupId>
                 <artifactId>hobbit-core-boot</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hobbit.core.secure</groupId>
+                <artifactId>hobbit-core-secure</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hobbit.core.jwt</groupId>
+                <artifactId>hobbit-core-jwt</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hobbit</groupId>
+                <artifactId>hobbit-core-jwt</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <!-- google guava -->
@@ -161,6 +177,17 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-openfeign-dependencies</artifactId>
                 <version>${spring.cloud.openfeign.version}</version>
+            </dependency>
+            <!--jwt-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jsonwebtoken.jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jsonwebtoken.jjwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

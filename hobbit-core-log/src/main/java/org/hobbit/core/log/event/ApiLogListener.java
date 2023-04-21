@@ -25,7 +25,7 @@ public class ApiLogListener {
 
   private final ILogClient logService;
   private final ServerInfo serverInfo;
-  private final HobbitProperties bladeProperties;
+  private final HobbitProperties hobbitProperties;
 
   @SuppressWarnings("all")
   @Async
@@ -34,7 +34,7 @@ public class ApiLogListener {
   public void saveApiLog(ApiLogEvent event) {
     Map<String, Object> source = (Map<String, Object>) event.getSource();
     LogApi logApi = (LogApi) source.get(EventConstant.EVENT_LOG);
-    LogAbstractUtil.addOtherInfoToLog(logApi, bladeProperties, serverInfo);
+    LogAbstractUtil.addOtherInfoToLog(logApi, hobbitProperties, serverInfo);
     logService.saveApiLog(logApi);
   }
 }
