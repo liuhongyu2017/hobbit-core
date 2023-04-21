@@ -38,7 +38,6 @@ public class UrlUtil extends org.springframework.web.util.UriUtils {
    * @param charset 字符集
    * @return 编码后的url
    */
-  @Deprecated
   public static String encodeURL(String source, Charset charset) {
     return UrlUtil.encode(source, charset.name());
   }
