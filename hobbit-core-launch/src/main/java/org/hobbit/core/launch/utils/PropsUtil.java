@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 public class PropsUtil {
 
   public static void setProperty(Properties props, String key, String value) {
-    if (StringUtils.hasLength(props.getProperty(key))) {
+    if (!StringUtils.hasLength(props.getProperty(key))) {
       props.setProperty(key, value);
     }
   }

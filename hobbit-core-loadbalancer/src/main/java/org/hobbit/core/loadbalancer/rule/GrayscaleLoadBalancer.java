@@ -1,25 +1,20 @@
 package org.hobbit.core.loadbalancer.rule;
 
-import static org.hobbit.core.loadbalancer.constant.LoadBalancerConstant.VERSION_NAME;
-
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.hobbit.core.loadbalancer.props.HobbitLoadBalancerProperties;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.loadbalancer.DefaultRequestContext;
 import org.springframework.cloud.client.loadbalancer.DefaultResponse;
 import org.springframework.cloud.client.loadbalancer.EmptyResponse;
 import org.springframework.cloud.client.loadbalancer.Request;
-import org.springframework.cloud.client.loadbalancer.RequestData;
 import org.springframework.cloud.client.loadbalancer.Response;
 import org.springframework.cloud.loadbalancer.core.NoopServiceInstanceListSupplier;
 import org.springframework.cloud.loadbalancer.core.ReactorServiceInstanceLoadBalancer;
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
-import org.springframework.http.HttpHeaders;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.PatternMatchUtils;
 import reactor.core.publisher.Mono;
@@ -30,11 +25,12 @@ import reactor.core.publisher.Mono;
  * @author lhy
  * @version 1.0.0 2023/4/11
  */
+@RequiredArgsConstructor
 @Slf4j
-public record GrayscaleLoadBalancer(
-    ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider,
-    HobbitLoadBalancerProperties hobbitLoadBalancerProperties
-) implements ReactorServiceInstanceLoadBalancer {
+public class GrayscaleLoadBalancer implements ReactorServiceInstanceLoadBalancer {
+
+  private final ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider;
+  private final HobbitLoadBalancerProperties hobbitLoadBalancerProperties;
 
   @Override
   public Mono<Response<ServiceInstance>> choose(Request request) {
@@ -64,27 +60,7 @@ public record GrayscaleLoadBalancer(
         instances = priorIpInstances;
       }
     }
-
-    // 获取灰度版本号
-    DefaultRequestContext context = (DefaultRequestContext) request.getContext();
-    RequestData requestData = (RequestData) context.getClientRequest();
-    HttpHeaders headers = requestData.getHeaders();
-    String versionName = headers.getFirst(VERSION_NAME);
-
-    // 没有指定灰度版本则返回正式的服务
-    if (StringUtils.isBlank(versionName)) {
-      List<ServiceInstance> noneGrayscaleInstances = instances.stream().filter(
-          i -> !i.getMetadata().containsKey(VERSION_NAME)
-      ).collect(Collectors.toList());
-      return randomInstance(noneGrayscaleInstances);
-    }
-
-    // 指定灰度版本则返回标记的服务
-    List<ServiceInstance> grayscaleInstances = instances.stream().filter(i -> {
-      String versionNameInMetadata = i.getMetadata().get(VERSION_NAME);
-      return StringUtils.equalsIgnoreCase(versionNameInMetadata, versionName);
-    }).collect(Collectors.toList());
-    return randomInstance(grayscaleInstances);
+    return randomInstance(instances);
   }
 
   /**

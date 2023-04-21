@@ -19,16 +19,12 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 @ConfigurationProperties(HobbitLoadBalancerProperties.PROPERTIES_PREFIX)
 public class HobbitLoadBalancerProperties {
 
-  public static final String PROPERTIES_PREFIX = "blade.loadbalancer";
+  public static final String PROPERTIES_PREFIX = "hobbit.loadbalancer";
 
   /**
    * 是否开启自定义负载均衡
    */
   private boolean enabled = true;
-  /**
-   * 灰度服务版本
-   */
-  private String version;
   /**
    * 优先的ip列表，支持通配符，例如：10.20.0.8*、10.20.0.*
    */

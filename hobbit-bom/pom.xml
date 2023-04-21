@@ -25,6 +25,7 @@
         <alibaba.nacos.version>2.1.0</alibaba.nacos.version>
         <mica.version>3.0.1</mica.version>
         <logback.version>6.2</logback.version>
+        <spring.cloud.openfeign.version>4.0.2</spring.cloud.openfeign.version>
     </properties>
 
     <dependencyManagement>
@@ -110,6 +111,11 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
             <!--hobbit-jackson-->
             <dependency>
                 <groupId>org.hobbit</groupId>
@@ -149,6 +155,12 @@
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logback.version}</version>
+            </dependency>
+            <!--spring cloud openfeign-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-openfeign-dependencies</artifactId>
+                <version>${spring.cloud.openfeign.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

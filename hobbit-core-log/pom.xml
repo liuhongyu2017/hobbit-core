@@ -16,29 +16,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hobbit</groupId>
-            <artifactId>hobbit-core-tool</artifactId>
-        </dependency>
-        <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-auto</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!--hobbit-->
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-tool</artifactId>
         </dependency>
         <dependency>
             <groupId>org.hobbit</groupId>
@@ -48,6 +33,20 @@
         <dependency>
             <groupId>org.hobbit</groupId>
             <artifactId>hobbit-core-launch</artifactId>
+        </dependency>
+        <!--spring boot-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--other-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
         </dependency>
     </dependencies>
 

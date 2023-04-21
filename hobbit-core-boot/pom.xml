@@ -16,13 +16,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hobbit</groupId>
-            <artifactId>hobbit-core-context</artifactId>
-        </dependency>
-        <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-auto</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <!--hobbit-->
+        <dependency>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-context</artifactId>
         </dependency>
         <dependency>
             <groupId>org.hobbit</groupId>

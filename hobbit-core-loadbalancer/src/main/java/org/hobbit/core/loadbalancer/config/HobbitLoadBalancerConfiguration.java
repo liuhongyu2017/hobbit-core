@@ -22,7 +22,7 @@ import org.springframework.core.env.Environment;
 @AutoConfiguration(before = LoadBalancerClientConfiguration.class)
 @EnableConfigurationProperties(HobbitLoadBalancerProperties.class)
 @ConditionalOnProperty(value = HobbitLoadBalancerProperties.PROPERTIES_PREFIX
-    + ".enabled", matchIfMissing = true)
+    + ".enabled", havingValue = "true", matchIfMissing = true)
 @Order(HobbitLoadBalancerConfiguration.REACTIVE_SERVICE_INSTANCE_SUPPLIER_ORDER)
 public class HobbitLoadBalancerConfiguration {
 
@@ -42,7 +42,7 @@ public class HobbitLoadBalancerConfiguration {
 
   @Bean
   public LoadBalancerClientSpecification loadBalancerClientSpecification() {
-    return new LoadBalancerClientSpecification("default.bladeLoadBalancerConfiguration",
+    return new LoadBalancerClientSpecification("default.hobbitLoadBalancerConfiguration",
         new Class[]{HobbitLoadBalancerConfiguration.class});
   }
 }
