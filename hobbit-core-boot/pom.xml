@@ -29,6 +29,10 @@
             <groupId>org.hobbit</groupId>
             <artifactId>hobbit-core-launch</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.hobbit</groupId>
+            <artifactId>hobbit-core-log</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
