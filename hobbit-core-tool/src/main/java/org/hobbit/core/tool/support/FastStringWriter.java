@@ -4,6 +4,7 @@ package org.hobbit.core.tool.support;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
+import javax.annotation.Nonnull;
 import org.hobbit.core.tool.utils.StringPool;
 
 /**
@@ -67,7 +68,7 @@ public class FastStringWriter extends Writer {
    * @param len the number of chars that are written
    */
   @Override
-  public void write(char[] c, int off, int len) {
+  public void write(@Nonnull char[] c, int off, int len) {
     if ((off < 0) || (off > c.length) || (len < 0) ||
         ((off + len) > c.length) || ((off + len) < 0)) {
       throw new IndexOutOfBoundsException();
@@ -90,7 +91,7 @@ public class FastStringWriter extends Writer {
    * @param len Number of characters to be written
    */
   @Override
-  public void write(String str, int off, int len) {
+  public void write(@Nonnull String str, int off, int len) {
     int newCount = count + len;
     if (newCount > buf.length) {
       buf = Arrays.copyOf(buf, Math.max(buf.length << 1, newCount));

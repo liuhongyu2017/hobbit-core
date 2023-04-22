@@ -27,7 +27,7 @@ public class ErrorLogListener {
   private final ServerInfo serverInfo;
   private final HobbitProperties hobbitProperties;
 
-  @SuppressWarnings("all")
+  @SuppressWarnings("unchecked")
   @Async
   @Order
   @EventListener(ErrorLogEvent.class)

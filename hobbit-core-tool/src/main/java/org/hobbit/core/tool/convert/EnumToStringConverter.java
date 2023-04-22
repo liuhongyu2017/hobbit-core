@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import javax.annotation.Nonnull;
 import lombok.extern.slf4j.Slf4j;
 import org.hobbit.core.tool.utils.ConvertUtil;
 import org.springframework.core.convert.TypeDescriptor;
@@ -51,22 +52,20 @@ public class EnumToStringConverter implements ConditionalGenericConverter {
   }
 
   @Override
-  public boolean matches(TypeDescriptor sourceType, TypeDescriptor targetType) {
+  public boolean matches(@Nonnull TypeDescriptor sourceType, @Nonnull TypeDescriptor targetType) {
     return true;
   }
 
   @Override
   public Set<ConvertiblePair> getConvertibleTypes() {
-    Set<ConvertiblePair> pairSet = new HashSet<>(3);
-    pairSet.add(new ConvertiblePair(Enum.class, String.class));
-    pairSet.add(new ConvertiblePair(Enum.class, Integer.class));
-    pairSet.add(new ConvertiblePair(Enum.class, Long.class));
-    return Collections.unmodifiableSet(pairSet);
+    return Set.of(new ConvertiblePair(Enum.class, String.class),
+        new ConvertiblePair(Enum.class, Integer.class),
+        new ConvertiblePair(Enum.class, Long.class));
   }
 
   @Override
-  public Object convert(@Nullable Object source, TypeDescriptor sourceType,
-      TypeDescriptor targetType) {
+  public Object convert(@Nullable Object source, @Nonnull TypeDescriptor sourceType,
+      @Nonnull TypeDescriptor targetType) {
     if (source == null) {
       return null;
     }
@@ -77,9 +76,9 @@ public class EnumToStringConverter implements ConditionalGenericConverter {
     // 如果为null，走默认的转换
     if (accessibleObject == null) {
       if (String.class == targetClazz) {
-        return ((Enum) source).name();
+        return ((Enum<?>) source).name();
       }
-      int ordinal = ((Enum) source).ordinal();
+      int ordinal = ((Enum<?>) source).ordinal();
       return ConvertUtil.convert(ordinal, targetClazz);
     }
     try {
@@ -95,11 +94,9 @@ public class EnumToStringConverter implements ConditionalGenericConverter {
       Class<?> targetClazz)
       throws IllegalAccessException, InvocationTargetException {
     Object value = null;
-    if (accessibleObject instanceof Field) {
-      Field field = (Field) accessibleObject;
+    if (accessibleObject instanceof Field field) {
       value = field.get(source);
-    } else if (accessibleObject instanceof Method) {
-      Method method = (Method) accessibleObject;
+    } else if (accessibleObject instanceof Method method) {
       Class<?> paramType = method.getParameterTypes()[0];
       // 类型转换
       Object object = ConvertUtil.convert(source, paramType);

@@ -14,9 +14,8 @@ public interface CheckedSupplier<T> {
    * Run the Supplier
    *
    * @return T
-   * @throws Throwable CheckedException
    */
   @Nullable
-  T get() throws Throwable;
+  T get();
 
 }

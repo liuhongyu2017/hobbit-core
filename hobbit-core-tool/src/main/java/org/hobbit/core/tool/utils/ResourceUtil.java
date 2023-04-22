@@ -1,6 +1,7 @@
 package org.hobbit.core.tool.utils;
 
 import java.io.IOException;
+import java.util.Objects;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -42,7 +43,7 @@ public class ResourceUtil extends org.springframework.util.ResourceUtils {
       return new UrlResource(resourceLocation);
     }
     if (resourceLocation.startsWith(ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX)) {
-      return SpringUtil.getContext().getResource(resourceLocation);
+      return Objects.requireNonNull(SpringUtil.getContext()).getResource(resourceLocation);
     }
     return new FileSystemResource(resourceLocation);
   }

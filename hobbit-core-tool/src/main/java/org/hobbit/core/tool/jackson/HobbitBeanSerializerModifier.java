@@ -65,7 +65,7 @@ public class HobbitBeanSerializerModifier extends BeanSerializerModifier {
 
   public interface NullJsonSerializers {
 
-    JsonSerializer<Object> STRING_JSON_SERIALIZER = new JsonSerializer<Object>() {
+    JsonSerializer<Object> STRING_JSON_SERIALIZER = new JsonSerializer<>() {
       @Override
       public void serialize(Object value, JsonGenerator gen, SerializerProvider serializers)
           throws IOException {
@@ -73,7 +73,7 @@ public class HobbitBeanSerializerModifier extends BeanSerializerModifier {
       }
     };
 
-    JsonSerializer<Object> NUMBER_JSON_SERIALIZER = new JsonSerializer<Object>() {
+    JsonSerializer<Object> NUMBER_JSON_SERIALIZER = new JsonSerializer<>() {
       @Override
       public void serialize(Object value, JsonGenerator gen, SerializerProvider serializers)
           throws IOException {
@@ -81,7 +81,7 @@ public class HobbitBeanSerializerModifier extends BeanSerializerModifier {
       }
     };
 
-    JsonSerializer<Object> BOOLEAN_JSON_SERIALIZER = new JsonSerializer<Object>() {
+    JsonSerializer<Object> BOOLEAN_JSON_SERIALIZER = new JsonSerializer<>() {
       @Override
       public void serialize(Object value, JsonGenerator gen, SerializerProvider serializers)
           throws IOException {
@@ -89,7 +89,7 @@ public class HobbitBeanSerializerModifier extends BeanSerializerModifier {
       }
     };
 
-    JsonSerializer<Object> ARRAY_JSON_SERIALIZER = new JsonSerializer<Object>() {
+    JsonSerializer<Object> ARRAY_JSON_SERIALIZER = new JsonSerializer<>() {
       @Override
       public void serialize(Object value, JsonGenerator gen, SerializerProvider serializers)
           throws IOException {
@@ -98,7 +98,7 @@ public class HobbitBeanSerializerModifier extends BeanSerializerModifier {
       }
     };
 
-    JsonSerializer<Object> OBJECT_JSON_SERIALIZER = new JsonSerializer<Object>() {
+    JsonSerializer<Object> OBJECT_JSON_SERIALIZER = new JsonSerializer<>() {
       @Override
       public void serialize(Object value, JsonGenerator gen, SerializerProvider serializers)
           throws IOException {

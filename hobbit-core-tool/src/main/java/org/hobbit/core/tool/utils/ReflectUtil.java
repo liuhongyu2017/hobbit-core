@@ -26,7 +26,7 @@ public class ReflectUtil extends ReflectionUtils {
    * @param type 类
    * @return PropertyDescriptor数组
    */
-  public static PropertyDescriptor[] getBeanGetters(Class type) {
+  public static PropertyDescriptor[] getBeanGetters(Class<?> type) {
     return getPropertiesHelper(type, true, false);
   }
 
@@ -36,7 +36,7 @@ public class ReflectUtil extends ReflectionUtils {
    * @param type 类
    * @return PropertyDescriptor数组
    */
-  public static PropertyDescriptor[] getBeanSetters(Class type) {
+  public static PropertyDescriptor[] getBeanSetters(Class<?> type) {
     return getPropertiesHelper(type, false, true);
   }
 
@@ -48,7 +48,8 @@ public class ReflectUtil extends ReflectionUtils {
    * @param write 写方法
    * @return PropertyDescriptor数组
    */
-  public static PropertyDescriptor[] getPropertiesHelper(Class type, boolean read, boolean write) {
+  public static PropertyDescriptor[] getPropertiesHelper(Class<?> type, boolean read,
+      boolean write) {
     try {
       PropertyDescriptor[] all = BeanUtil.getPropertyDescriptors(type);
       if (read && write) {

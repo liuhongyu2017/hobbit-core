@@ -59,11 +59,11 @@ public abstract class HobbitBeanCopier {
    */
   private static final ConcurrentMap<HobbitBeanCopierKey, HobbitBeanCopier> BEAN_COPIER_MAP = new ConcurrentHashMap<>();
 
-  public static HobbitBeanCopier create(Class source, Class target, boolean useConverter) {
+  public static HobbitBeanCopier create(Class<?> source, Class<?> target, boolean useConverter) {
     return HobbitBeanCopier.create(source, target, useConverter, false);
   }
 
-  public static HobbitBeanCopier create(Class source, Class target, boolean useConverter,
+  public static HobbitBeanCopier create(Class<?> source, Class<?> target, boolean useConverter,
       boolean nonNull) {
     HobbitBeanCopierKey copierKey = new HobbitBeanCopierKey(source, target, useConverter, nonNull);
     // 利用 ConcurrentMap 缓存 提高性能，接近 直接 get set
@@ -86,11 +86,11 @@ public abstract class HobbitBeanCopier {
    */
   abstract public void copy(Object from, Object to, @Nullable Converter converter);
 
-  public static class Generator extends AbstractClassGenerator {
+  public static class Generator extends AbstractClassGenerator<Object> {
 
     private static final Source SOURCE = new Source(HobbitBeanCopier.class.getName());
-    private Class source;
-    private Class target;
+    private Class<?> source;
+    private Class<?> target;
     private boolean useConverter;
     private boolean nonNull;
 
@@ -98,14 +98,14 @@ public abstract class HobbitBeanCopier {
       super(SOURCE);
     }
 
-    public void setSource(Class source) {
+    public void setSource(Class<?> source) {
       if (!Modifier.isPublic(source.getModifiers())) {
         setNamePrefix(source.getName());
       }
       this.source = source;
     }
 
-    public void setTarget(Class target) {
+    public void setTarget(Class<?> target) {
       if (!Modifier.isPublic(target.getModifiers())) {
         setNamePrefix(target.getName());
       }
@@ -364,7 +364,7 @@ public abstract class HobbitBeanCopier {
         EmitUtils.load_class(e, setterType);
         e.load_local(var);
         // ClassUtils.isAssignableValue(Integer.class, id)
-        e.invoke_static(CLASS_UTILS, IS_ASSIGNABLE_VALUE);
+        e.invoke_static(CLASS_UTILS, IS_ASSIGNABLE_VALUE, false);
         Label l1 = new Label();
         // 返回值，判断 链式 bean
         Class<?> returnType = writeMethod.getReturnType();
@@ -385,15 +385,13 @@ public abstract class HobbitBeanCopier {
           EmitUtils.load_class(e, setterType);
           e.push(propName);
           e.invoke_interface(CONVERTER, CONVERT);
-          e.unbox_or_zero(setterType);
-          e.invoke(write);
         } else {
           e.if_jump(Opcodes.IFEQ, l0);
           e.load_local(targetLocal);
           e.load_local(var);
-          e.unbox_or_zero(setterType);
-          e.invoke(write);
         }
+        e.unbox_or_zero(setterType);
+        e.invoke(write);
         // 返回值，判断 链式 bean
         if (!returnType.equals(Void.TYPE)) {
           e.pop();

@@ -2,6 +2,7 @@ package org.hobbit.core.tool.utils;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Objects;
 import org.springframework.lang.Nullable;
 
 /**
@@ -25,10 +26,11 @@ public class PathUtil {
   @Nullable
   public static String getJarPath() {
     try {
-      URL url = PathUtil.class.getResource(StringPool.SLASH).toURI().toURL();
+      URL url = Objects.requireNonNull(PathUtil.class.getResource(StringPool.SLASH)).toURI()
+          .toURL();
       return PathUtil.toFilePath(url);
     } catch (Exception e) {
-      String path = PathUtil.class.getResource(StringPool.EMPTY).getPath();
+      String path = Objects.requireNonNull(PathUtil.class.getResource(StringPool.EMPTY)).getPath();
       return new File(path).getParentFile().getParentFile().getAbsolutePath();
     }
   }

@@ -23,7 +23,6 @@ public class RestTemplateHeaderInterceptor implements ClientHttpRequestIntercept
   private final HobbitFeignAccountGetter accountGetter;
   private final HobbitFeignHeadersProperties properties;
 
-  @SuppressWarnings("all")
   @Override
   public ClientHttpResponse intercept(HttpRequest request, byte[] bytes,
       ClientHttpRequestExecution execution) throws IOException {

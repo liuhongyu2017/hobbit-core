@@ -37,7 +37,6 @@ public class TokenArgumentResolver implements HandlerMethodArgumentResolver {
    * @param binderFactory 入参解析
    * @return 包装对象
    */
-  @SuppressWarnings("all")
   @Nullable
   @Override
   public Object resolveArgument(

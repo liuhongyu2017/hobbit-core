@@ -48,7 +48,6 @@ public class HobbitPropertySourcePostProcessor implements BeanFactoryPostProcess
         getClass().getClassLoader());
   }
 
-  @SuppressWarnings("all")
   @Override
   public void postProcessBeanFactory(
       ConfigurableListableBeanFactory beanFactory) throws BeansException {
@@ -93,7 +92,7 @@ public class HobbitPropertySourcePostProcessor implements BeanFactoryPostProcess
 
     // 只支持 activeProfiles，没有必要支持 spring.profiles.include。
     String[] activeProfiles = environment.getActiveProfiles();
-    List<PropertySource> propertySourceList = new ArrayList<>();
+    List<PropertySource<?>> propertySourceList = new ArrayList<>();
     for (String profile : activeProfiles) {
       for (PropertyFile propertyFile : sortedPropertyList) {
         // 不加载 ActiveProfile 的配置文件
@@ -122,15 +121,14 @@ public class HobbitPropertySourcePostProcessor implements BeanFactoryPostProcess
       loadPropertySource(location, resource, loader, propertySourceList);
     }
     // 转存
-    for (PropertySource propertySource : propertySourceList) {
+    for (PropertySource<?> propertySource : propertySourceList) {
       propertySources.addLast(propertySource);
     }
   }
 
-  @SuppressWarnings("all")
   private static void loadPropertySource(String location, Resource resource,
       PropertySourceLoader loader,
-      List<PropertySource> sourceList) {
+      List<PropertySource<?>> sourceList) {
     if (resource.exists()) {
       String name = "HobbitPropertySource: [" + location + "]";
       try {

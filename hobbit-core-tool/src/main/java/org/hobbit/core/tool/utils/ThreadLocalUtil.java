@@ -55,6 +55,7 @@ public class ThreadLocalUtil {
    * @return 被放入的值
    * @see Map#put(Object, Object)
    */
+  @SuppressWarnings("UnusedReturnValue")
   public static <T> T put(String key, T value) {
     LOCAL.get().put(key, value);
     return value;
@@ -64,7 +65,6 @@ public class ThreadLocalUtil {
    * 设置一个值到ThreadLocal
    *
    * @param map map
-   * @return 被放入的值
    * @see Map#putAll(Map)
    */
   public static void put(Map<String, Object> map) {
@@ -74,7 +74,6 @@ public class ThreadLocalUtil {
   /**
    * 删除参数对应的值
    *
-   * @param key
    * @see Map#remove(Object)
    */
   public static void remove(String key) {

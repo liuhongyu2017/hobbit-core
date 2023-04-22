@@ -1,10 +1,12 @@
 package org.hobbit.core.tool.config;
 
 import com.fasterxml.jackson.core.json.JsonReadFeature;
+import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.Locale;
@@ -30,6 +32,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 @EnableConfigurationProperties(HobbitJacksonProperties.class)
 public class JacksonConfiguration {
 
+  @SuppressWarnings("unused")
   @Bean
   @ConditionalOnMissingBean
   public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
@@ -54,12 +57,14 @@ public class JacksonConfiguration {
     //单引号处理
     objectMapper.configure(JsonReadFeature.ALLOW_SINGLE_QUOTES.mappedFeature(), true);
     //反序列化时，属性不存在的兼容处理
-    objectMapper.getDeserializationConfig()
+    DeserializationConfig deserializationConfig = objectMapper.getDeserializationConfig()
         .withoutFeatures(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     //日期格式化
-    objectMapper.configure(MapperFeature.IGNORE_DUPLICATE_MODULE_REGISTRATIONS, false);
+    JsonMapper.builder(objectMapper.getFactory())
+        .disable(MapperFeature.IGNORE_DUPLICATE_MODULE_REGISTRATIONS);
     objectMapper.registerModule(HobbitJavaTimeModule.INSTANCE);
-    objectMapper.configure(MapperFeature.IGNORE_DUPLICATE_MODULE_REGISTRATIONS, true);
+    JsonMapper.builder(objectMapper.getFactory())
+        .enable(MapperFeature.IGNORE_DUPLICATE_MODULE_REGISTRATIONS);
     objectMapper.findAndRegisterModules();
     return objectMapper;
   }

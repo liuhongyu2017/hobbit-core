@@ -26,9 +26,6 @@ public class YmlPropertyLoaderFactory extends DefaultPropertySourceFactory {
   @Override
   public PropertySource<?> createPropertySource(@Nullable String name,
       EncodedResource encodedResource) throws IOException {
-    if (encodedResource == null) {
-      return emptyPropertySource(name);
-    }
     Resource resource = encodedResource.getResource();
     String fileName = resource.getFilename();
     List<PropertySource<?>> sources = new YamlPropertySourceLoader().load(fileName, resource);

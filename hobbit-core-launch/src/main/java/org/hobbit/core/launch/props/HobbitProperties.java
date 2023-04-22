@@ -204,7 +204,6 @@ public class HobbitProperties implements EnvironmentAware, EnvironmentCapable {
     this.environment = environment;
   }
 
-  @SuppressWarnings("all")
   @Override
   public Environment getEnvironment() {
     Objects.requireNonNull(environment, "Spring boot 环境下 Environment 不可能为null");

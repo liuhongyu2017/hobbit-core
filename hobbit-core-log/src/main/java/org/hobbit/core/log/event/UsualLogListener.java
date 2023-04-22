@@ -27,7 +27,7 @@ public class UsualLogListener {
   private final ServerInfo serverInfo;
   private final HobbitProperties hobbitProperties;
 
-  @SuppressWarnings("all")
+  @SuppressWarnings("unchecked")
   @Async
   @Order
   @EventListener(UsualLogEvent.class)

@@ -14,8 +14,7 @@ public interface CheckedCallable<T> {
    * Run this callable.
    *
    * @return result
-   * @throws Throwable CheckedException
    */
   @Nullable
-  T call() throws Throwable;
+  T call();
 }

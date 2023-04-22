@@ -32,8 +32,6 @@ public class FileUtil extends org.springframework.util.FileCopyUtils {
    */
   public static class TrueFilter implements FileFilter, Serializable {
 
-    private static final long serialVersionUID = -6420452043795072619L;
-
     public final static TrueFilter TRUE = new TrueFilter();
 
     @Override
@@ -359,6 +357,7 @@ public class FileUtil extends org.springframework.util.FileCopyUtils {
    * @param file file or directory to delete, can be {@code null}
    * @return {@code true} if the file or directory was deleted, otherwise {@code false}
    */
+  @SuppressWarnings("UnusedReturnValue")
   public static boolean deleteQuietly(@Nullable final File file) {
     if (file == null) {
       return false;

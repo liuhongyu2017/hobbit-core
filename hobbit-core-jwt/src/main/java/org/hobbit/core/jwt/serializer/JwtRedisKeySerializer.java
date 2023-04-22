@@ -54,7 +54,6 @@ public class JwtRedisKeySerializer implements RedisSerializer<Object> {
   @Nullable
   @Override
   public Object deserialize(@Nullable byte[] bytes) throws SerializationException {
-    // redis keys 会用到反序列化
     if (bytes == null) {
       return null;
     }

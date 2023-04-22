@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import java.io.Serial;
 import java.util.Objects;
 import lombok.Data;
-import org.hobbit.core.tool.utils.Func;
 
 /**
  * 树型节点类
@@ -27,20 +26,23 @@ public class TreeNode extends BaseNode<TreeNode> {
   private Long value;
 
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
+  public boolean equals(Object o) {
+    if (this == o) {
       return true;
     }
-    if (obj == null) {
+    if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TreeNode other = (TreeNode) obj;
-    return Func.equals(this.getId(), other.getId());
+    if (!super.equals(o)) {
+      return false;
+    }
+    TreeNode treeNode = (TreeNode) o;
+    return Objects.equals(title, treeNode.title) && Objects.equals(key,
+        treeNode.key) && Objects.equals(value, treeNode.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, parentId);
+    return Objects.hash(super.hashCode(), title, key, value);
   }
-
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -626,7 +627,7 @@ public class JsonUtil {
     return getInstance().canSerialize(value.getClass());
   }
 
-  @SuppressWarnings("all")
+  @SuppressWarnings("unchecked")
   public static Map<String, Object> toMap(String content) {
     try {
       return getInstance().readValue(content, Map.class);
@@ -676,7 +677,7 @@ public class JsonUtil {
       super(src);
     }
 
-    @SuppressWarnings("all")
+    @SuppressWarnings("unused")
     public JacksonObjectMapper() {
       super();
       //设置地点为中国
@@ -699,7 +700,7 @@ public class JsonUtil {
       //单引号处理
       super.configure(JsonReadFeature.ALLOW_SINGLE_QUOTES.mappedFeature(), true);
       //反序列化时，属性不存在的兼容处理s
-      super.getDeserializationConfig()
+      DeserializationConfig deserializationConfig = super.getDeserializationConfig()
           .withoutFeatures(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
       //日期格式化
       super.registerModule(new HobbitJavaTimeModule());

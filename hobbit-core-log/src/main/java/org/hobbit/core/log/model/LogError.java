@@ -1,7 +1,6 @@
 package org.hobbit.core.log.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serial;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

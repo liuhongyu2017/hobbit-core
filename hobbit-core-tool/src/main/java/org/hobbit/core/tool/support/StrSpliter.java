@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import org.hobbit.core.tool.utils.Func;
 import org.hobbit.core.tool.utils.StringPool;
 import org.hobbit.core.tool.utils.StringUtil;
+import org.springframework.util.ObjectUtils;
 
 /**
  * 字符串切分器
@@ -151,11 +152,11 @@ public class StrSpliter {
    */
   public static List<String> split(String str, char separator, int limit, boolean isTrim,
       boolean ignoreEmpty, boolean ignoreCase) {
-    if (StringUtil.isEmpty(str)) {
-      return new ArrayList<String>(0);
+    if (ObjectUtils.isEmpty(str)) {
+      return new ArrayList<>(0);
     }
     if (limit == 1) {
-      return addToList(new ArrayList<String>(1), str, isTrim, ignoreEmpty);
+      return addToList(new ArrayList<>(1), str, isTrim, ignoreEmpty);
     }
 
     final ArrayList<String> list = new ArrayList<>(limit > 0 ? limit : 16);
@@ -297,14 +298,14 @@ public class StrSpliter {
    */
   public static List<String> split(String str, String separator, int limit, boolean isTrim,
       boolean ignoreEmpty, boolean ignoreCase) {
-    if (StringUtil.isEmpty(str)) {
-      return new ArrayList<String>(0);
+    if (ObjectUtils.isEmpty(str)) {
+      return new ArrayList<>(0);
     }
     if (limit == 1) {
-      return addToList(new ArrayList<String>(1), str, isTrim, ignoreEmpty);
+      return addToList(new ArrayList<>(1), str, isTrim, ignoreEmpty);
     }
 
-    if (StringUtil.isEmpty(separator)) {
+    if (ObjectUtils.isEmpty(separator)) {
       return split(str, limit);
     } else if (separator.length() == 1) {
       return split(str, separator.charAt(0), limit, isTrim, ignoreEmpty, ignoreCase);
@@ -359,11 +360,11 @@ public class StrSpliter {
    * @since 3.0.8
    */
   public static List<String> split(String str, int limit) {
-    if (StringUtil.isEmpty(str)) {
-      return new ArrayList<String>(0);
+    if (ObjectUtils.isEmpty(str)) {
+      return new ArrayList<>(0);
     }
     if (limit == 1) {
-      return addToList(new ArrayList<String>(1), str, true, true);
+      return addToList(new ArrayList<>(1), str, true, true);
     }
 
     final ArrayList<String> list = new ArrayList<>();
@@ -408,11 +409,11 @@ public class StrSpliter {
    */
   public static List<String> split(String str, Pattern separatorPattern, int limit, boolean isTrim,
       boolean ignoreEmpty) {
-    if (StringUtil.isEmpty(str)) {
-      return new ArrayList<String>(0);
+    if (ObjectUtils.isEmpty(str)) {
+      return new ArrayList<>(0);
     }
     if (limit == 1) {
-      return addToList(new ArrayList<String>(1), str, isTrim, ignoreEmpty);
+      return addToList(new ArrayList<>(1), str, isTrim, ignoreEmpty);
     }
 
     if (null == separatorPattern) {
@@ -491,11 +492,10 @@ public class StrSpliter {
    */
   private static List<String> addToList(List<String> list, String part, boolean isTrim,
       boolean ignoreEmpty) {
-    part = part.toString();
     if (isTrim) {
       part = part.trim();
     }
-    if (false == ignoreEmpty || false == part.isEmpty()) {
+    if (!ignoreEmpty || !part.isEmpty()) {
       list.add(part);
     }
     return list;
@@ -508,7 +508,7 @@ public class StrSpliter {
    * @return Array
    */
   private static String[] toArray(List<String> list) {
-    return list.toArray(new String[list.size()]);
+    return list.toArray(new String[0]);
   }
   //---------------------------------------------------------------------------------------------------------- Private method end
 }

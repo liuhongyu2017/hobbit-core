@@ -52,13 +52,9 @@ public class Try {
 
     /**
      * apply
-     *
-     * @param t
-     * @return
-     * @throws Exception
      */
     @Nullable
-    R apply(@Nullable T t) throws Exception;
+    R apply(@Nullable T t);
   }
 
   @FunctionalInterface
@@ -66,12 +62,8 @@ public class Try {
 
     /**
      * accept
-     *
-     * @param t
-     * @throws Exception
      */
-    @Nullable
-    void accept(@Nullable T t) throws Exception;
+    void accept(@Nullable T t);
   }
 
   @FunctionalInterface
@@ -79,11 +71,8 @@ public class Try {
 
     /**
      * get
-     *
-     * @return
-     * @throws Exception
      */
     @Nullable
-    T get() throws Exception;
+    T get();
   }
 }

@@ -182,7 +182,7 @@ public final class XssHtmlFilter {
    *
    * @param conf map containing configuration. keys match field names.
    */
-  @SuppressWarnings("all")
+  @SuppressWarnings("unchecked")
   public XssHtmlFilter(final Map<String, Object> conf) {
 
     assert conf.containsKey("vAllowed") : "configuration requires vAllowed";
@@ -446,7 +446,6 @@ public final class XssHtmlFilter {
     return s;
   }
 
-  @SuppressWarnings("all")
   private String decodeEntities(String s) {
     StringBuilder buf = new StringBuilder();
 

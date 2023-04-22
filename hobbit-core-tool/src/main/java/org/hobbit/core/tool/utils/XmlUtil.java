@@ -239,9 +239,6 @@ public class XmlUtil {
 
   /**
    * preventXXE
-   *
-   * @param dbf
-   * @throws ParserConfigurationException
    */
   private static void preventXXE(DocumentBuilderFactory dbf) throws ParserConfigurationException {
     // This is the PRIMARY defense. If DTDs (doctypes) are disallowed, almost all XML entity attacks are prevented
@@ -270,6 +267,7 @@ public class XmlUtil {
     preventedXXE = true;
   }
 
+  @SuppressWarnings("SameReturnValue")
   private static XPathFactory getXPathFactory() {
     return XmlHelperHolder.xPathFactory;
   }
@@ -279,8 +277,8 @@ public class XmlUtil {
    */
   private static class XmlHelperHolder {
 
-    private static DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-    private static XPathFactory xPathFactory = XPathFactory.newInstance();
+    private final static DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+    private final static XPathFactory xPathFactory = XPathFactory.newInstance();
   }
 
 }

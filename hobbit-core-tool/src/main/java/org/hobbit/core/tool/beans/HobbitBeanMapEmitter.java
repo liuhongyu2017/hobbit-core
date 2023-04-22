@@ -40,7 +40,7 @@ class HobbitBeanMapEmitter extends ClassEmitter {
   private static final Signature GET_PROPERTY_TYPE = TypeUtils.parseSignature(
       "Class getPropertyType(String)");
 
-  public HobbitBeanMapEmitter(ClassVisitor v, String className, Class type, int require) {
+  public HobbitBeanMapEmitter(ClassVisitor v, String className, Class<?> type, int require) {
     super(v);
 
     begin_class(Constants.V1_2, Constants.ACC_PUBLIC, className, BEAN_MAP, null,
@@ -56,7 +56,7 @@ class HobbitBeanMapEmitter extends ClassEmitter {
     allProps.putAll(setters);
 
     if (require != 0) {
-      for (Iterator it = allProps.keySet().iterator(); it.hasNext(); ) {
+      for (Iterator<?> it = allProps.keySet().iterator(); it.hasNext(); ) {
         String name = (String) it.next();
         if ((((require & HobbitBeanMap.REQUIRE_GETTER) != 0) && !getters.containsKey(name)) ||
             (((require & HobbitBeanMap.REQUIRE_SETTER) != 0) && !setters.containsKey(name))) {
@@ -100,7 +100,7 @@ class HobbitBeanMapEmitter extends ClassEmitter {
     e.end_method();
   }
 
-  private void generateGet(Class type, final Map<String, PropertyDescriptor> getters) {
+  private void generateGet(Class<?> type, final Map<String, PropertyDescriptor> getters) {
     final CodeEmitter e = begin_method(Constants.ACC_PUBLIC, BEAN_MAP_GET, null);
     e.load_arg(0);
     e.checkcast(Type.getType(type));
@@ -110,7 +110,7 @@ class HobbitBeanMapEmitter extends ClassEmitter {
         new ObjectSwitchCallback() {
           @Override
           public void processCase(Object key, Label end) {
-            PropertyDescriptor pd = getters.get(key);
+            PropertyDescriptor pd = getters.get(String.valueOf(key));
             MethodInfo method = ReflectUtils.getMethodInfo(pd.getReadMethod());
             e.invoke(method);
             e.box(method.getSignature().getReturnType());
@@ -126,7 +126,7 @@ class HobbitBeanMapEmitter extends ClassEmitter {
     e.end_method();
   }
 
-  private void generatePut(Class type, final Map<String, PropertyDescriptor> setters) {
+  private void generatePut(Class<?> type, final Map<String, PropertyDescriptor> setters) {
     final CodeEmitter e = begin_method(Constants.ACC_PUBLIC, BEAN_MAP_PUT, null);
     e.load_arg(0);
     e.checkcast(Type.getType(type));
@@ -136,7 +136,7 @@ class HobbitBeanMapEmitter extends ClassEmitter {
         new ObjectSwitchCallback() {
           @Override
           public void processCase(Object key, Label end) {
-            PropertyDescriptor pd = setters.get(key);
+            PropertyDescriptor pd = setters.get(String.valueOf(key));
             if (pd.getReadMethod() == null) {
               e.aconst_null();
             } else {
@@ -186,7 +186,7 @@ class HobbitBeanMapEmitter extends ClassEmitter {
     e.end_method();
   }
 
-  private void generateGetPropertyType(final Map allProps, String[] allNames) {
+  private void generateGetPropertyType(final Map<?, ?> allProps, String[] allNames) {
     final CodeEmitter e = begin_method(Constants.ACC_PUBLIC, GET_PROPERTY_TYPE, null);
     e.load_arg(0);
     EmitUtils.string_switch(e, allNames, Constants.SWITCH_STYLE_HASH, new ObjectSwitchCallback() {

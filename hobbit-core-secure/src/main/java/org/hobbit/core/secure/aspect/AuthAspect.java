@@ -48,13 +48,12 @@ public class AuthAspect implements ApplicationContextAware {
    * 方法和类 @annotation 扫描方法上，@within 扫描类上
    *
    * @param point 切点
-   * @throws Throwable 没有权限的异常
    */
   @Around(
       "@annotation(org.hobbit.core.secure.annotation.PreAuth) || " +
           "@within(org.hobbit.core.secure.annotation.PreAuth)"
   )
-  public Object preAuth(ProceedingJoinPoint point) throws Throwable {
+  public Object preAuth(ProceedingJoinPoint point) {
     throw new SecureException(ResultCode.UN_AUTHORIZED);
   }
 

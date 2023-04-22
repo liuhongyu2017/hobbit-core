@@ -12,6 +12,6 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 public class HobbitBeanMapKey {
 
-  private final Class type;
+  private final Class<?> type;
   private final int require;
 }

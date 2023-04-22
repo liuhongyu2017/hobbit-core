@@ -43,6 +43,7 @@ public class SpringUtil implements ApplicationContextAware {
    * @param <T>    泛型
    * @return T
    */
+  @SuppressWarnings("unchecked")
   public static <T> T getBean(String beanId) {
     if (beanId == null) {
       return null;
@@ -65,7 +66,7 @@ public class SpringUtil implements ApplicationContextAware {
     if (clazz == null) {
       return null;
     }
-    return (T) context.getBean(beanName, clazz);
+    return context.getBean(beanName, clazz);
   }
 
   /**

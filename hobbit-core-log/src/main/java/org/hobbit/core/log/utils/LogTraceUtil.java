@@ -23,17 +23,14 @@ public class LogTraceUtil {
   /**
    * 插入traceId
    */
-  public static boolean insert() {
+  public static void insert() {
     MDC.put(UNIQUE_ID, getTraceId());
-    return true;
   }
 
   /**
    * 移除traceId
    */
-  @SuppressWarnings("all")
-  public static boolean remove() {
+  public static void remove() {
     MDC.remove(UNIQUE_ID);
-    return true;
   }
 }

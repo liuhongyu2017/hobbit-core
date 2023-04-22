@@ -15,7 +15,6 @@ import org.springframework.util.PathMatcher;
 @AllArgsConstructor
 public class AntPathFilter implements FileFilter, Serializable {
 
-  private static final long serialVersionUID = 812598009067554612L;
   private static final PathMatcher PATH_MATCHER = new AntPathMatcher();
 
   private final String pattern;

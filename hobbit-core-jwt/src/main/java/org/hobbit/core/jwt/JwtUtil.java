@@ -18,8 +18,8 @@ public class JwtUtil {
   /**
    * token基础配置
    */
-  public static String BEARER = "hobbit";
-  public static Integer AUTH_LENGTH = 7;
+  public static final String BEARER = "hobbit";
+  public static final Integer AUTH_LENGTH = 7;
 
   /**
    * token保存至redis的key
@@ -55,10 +55,6 @@ public class JwtUtil {
     if (JwtUtil.redisTemplate == null) {
       JwtUtil.redisTemplate = redisTemplate;
     }
-  }
-
-  public static void main(String[] args) {
-
   }
 
   /**

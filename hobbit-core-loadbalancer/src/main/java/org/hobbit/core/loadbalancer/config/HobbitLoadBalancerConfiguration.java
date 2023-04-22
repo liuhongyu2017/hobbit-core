@@ -28,7 +28,6 @@ public class HobbitLoadBalancerConfiguration {
 
   public static final int REACTIVE_SERVICE_INSTANCE_SUPPLIER_ORDER = 193827465;
 
-  @SuppressWarnings("all")
   @Bean
   public ReactorLoadBalancer<ServiceInstance> reactorServiceInstanceLoadBalancer(
       Environment environment,

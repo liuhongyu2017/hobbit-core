@@ -40,7 +40,7 @@ public class HobbitErrorAttributes extends DefaultErrorAttributes {
     return BeanUtil.toMap(result);
   }
 
-  @SuppressWarnings("all")
+  @SuppressWarnings("unchecked")
   @Nullable
   private <T> T getAttr(WebRequest webRequest, String name) {
     return (T) webRequest.getAttribute(name, RequestAttributes.SCOPE_REQUEST);

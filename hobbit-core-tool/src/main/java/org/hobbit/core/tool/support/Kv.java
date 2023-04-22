@@ -39,6 +39,7 @@ public class Kv extends LinkedCaseInsensitiveMap<Object> {
    * @param value 值
    * @return 本身
    */
+  @SuppressWarnings("UnusedReturnValue")
   public Kv set(String attr, Object value) {
     this.put(attr, value);
     return this;
@@ -194,7 +195,6 @@ public class Kv extends LinkedCaseInsensitiveMap<Object> {
     return get(attr, null);
   }
 
-  @SuppressWarnings("all")
   @Override
   public Kv clone() {
     Kv clone = new Kv();

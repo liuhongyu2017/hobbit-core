@@ -26,7 +26,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 @AutoConfigureBefore(RedisAutoConfiguration.class)
 public class JwtRedisConfiguration {
 
-  @SuppressWarnings("all")
   @Bean("redisCacheManager")
   @ConditionalOnMissingBean(name = "redisCacheManager")
   public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {

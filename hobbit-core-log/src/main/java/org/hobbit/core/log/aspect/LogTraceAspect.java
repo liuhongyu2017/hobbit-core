@@ -15,6 +15,7 @@ import org.hobbit.core.log.utils.LogTraceUtil;
 @Aspect
 public class LogTraceAspect {
 
+  @SuppressWarnings("EmptyMethod")
   @Pointcut("@annotation(org.springframework.scheduling.annotation.Async)")
   public void logPointCut() {
   }

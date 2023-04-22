@@ -11,8 +11,7 @@ public interface CheckedRunnable {
   /**
    * Run this runnable.
    *
-   * @throws Throwable CheckedException
    */
-  void run() throws Throwable;
+  void run();
 
 }

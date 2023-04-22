@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import javax.annotation.Nonnull;
 import lombok.extern.slf4j.Slf4j;
 import org.hobbit.core.tool.utils.ConvertUtil;
 import org.hobbit.core.tool.utils.StringUtil;
@@ -52,7 +53,7 @@ public class StringToEnumConverter implements ConditionalGenericConverter {
   }
 
   @Override
-  public boolean matches(TypeDescriptor sourceType, TypeDescriptor targetType) {
+  public boolean matches(@Nonnull TypeDescriptor sourceType, @Nonnull TypeDescriptor targetType) {
     return true;
   }
 
@@ -92,15 +93,13 @@ public class StringToEnumConverter implements ConditionalGenericConverter {
   @Nullable
   private static Object invoke(Class<?> clazz, AccessibleObject accessibleObject, String value)
       throws IllegalAccessException, InvocationTargetException, InstantiationException {
-    if (accessibleObject instanceof Constructor) {
-      Constructor constructor = (Constructor) accessibleObject;
+    if (accessibleObject instanceof Constructor constructor) {
       Class<?> paramType = constructor.getParameterTypes()[0];
       // 类型转换
       Object object = ConvertUtil.convert(value, paramType);
       return constructor.newInstance(object);
     }
-    if (accessibleObject instanceof Method) {
-      Method method = (Method) accessibleObject;
+    if (accessibleObject instanceof Method method) {
       Class<?> paramType = method.getParameterTypes()[0];
       // 类型转换
       Object object = ConvertUtil.convert(value, paramType);

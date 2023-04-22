@@ -100,8 +100,7 @@ public abstract class AbstractReadWriteJackson2HttpMessageConverter extends
       FilterProvider filters = null;
       JavaType javaType = null;
 
-      if (object instanceof MappingJacksonValue) {
-        MappingJacksonValue container = (MappingJacksonValue) object;
+      if (object instanceof MappingJacksonValue container) {
         value = container.getValue();
         serializationView = container.getSerializationView();
         filters = container.getFilters();
