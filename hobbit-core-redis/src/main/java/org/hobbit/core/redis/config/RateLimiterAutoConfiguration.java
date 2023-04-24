@@ -1,11 +1,13 @@
 package org.hobbit.core.redis.config;
 
 import java.util.List;
+import org.hobbit.core.redis.props.HobbitRateLimiterProperties;
 import org.hobbit.core.redis.ratelimiter.RedisRateLimiterAspect;
 import org.hobbit.core.redis.ratelimiter.RedisRateLimiterClient;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
@@ -21,7 +23,8 @@ import org.springframework.scripting.support.ResourceScriptSource;
  * @version 1.0.0 2023/4/23
  */
 @AutoConfiguration
-@ConditionalOnProperty(value = "hobbit.redis.rate-limiter.enabled", havingValue = "true")
+@EnableConfigurationProperties(HobbitRateLimiterProperties.class)
+@ConditionalOnProperty(value = "hobbit.rate-limiter.enabled", havingValue = "true")
 public class RateLimiterAutoConfiguration {
 
   @SuppressWarnings({"unchecked", "rawtypes"})

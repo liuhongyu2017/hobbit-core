@@ -27,6 +27,8 @@
         <logback.version>6.2</logback.version>
         <spring.cloud.openfeign.version>4.0.2</spring.cloud.openfeign.version>
         <jsonwebtoken.jjwt.version>0.11.2</jsonwebtoken.jjwt.version>
+        <redisson.version>3.20.0</redisson.version>
+        <redisson.spring.boot.starter.version>1.0.0-M4</redisson.spring.boot.starter.version>
     </properties>
 
     <dependencyManagement>
@@ -188,6 +190,17 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-jackson</artifactId>
                 <version>${jsonwebtoken.jjwt.version}</version>
+            </dependency>
+            <!--redisson-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
