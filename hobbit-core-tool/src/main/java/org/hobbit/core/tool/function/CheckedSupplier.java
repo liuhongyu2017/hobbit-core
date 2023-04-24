@@ -16,6 +16,6 @@ public interface CheckedSupplier<T> {
    * @return T
    */
   @Nullable
-  T get();
+  T get() throws Throwable;
 
 }

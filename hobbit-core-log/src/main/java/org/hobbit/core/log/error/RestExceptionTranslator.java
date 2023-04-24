@@ -7,6 +7,7 @@ import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.hobbit.core.log.exception.ServiceException;
+import org.hobbit.core.redis.ratelimiter.RateLimiterException;
 import org.hobbit.core.tool.api.R;
 import org.hobbit.core.tool.api.ResultCode;
 import org.hobbit.core.tool.utils.StringUtil;
@@ -130,5 +131,13 @@ public class RestExceptionTranslator {
     String message = e.getMessage() + " " + StringUtil.join(e.getSupportedMediaTypes());
     log.error("不接受的媒体类型:{}", message);
     return R.fail(ResultCode.MEDIA_TYPE_NOT_SUPPORTED, message);
+  }
+
+  @ExceptionHandler(RateLimiterException.class)
+  @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
+  public R<?> handleError(RateLimiterException e) {
+    String message = e.getMessage();
+    log.error("访问次数已超限:{}", message);
+    return R.fail(ResultCode.FAILURE, message);
   }
 }
