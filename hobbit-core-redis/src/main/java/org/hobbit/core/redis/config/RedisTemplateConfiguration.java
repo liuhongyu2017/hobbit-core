@@ -1,6 +1,7 @@
 package org.hobbit.core.redis.config;
 
 import org.hobbit.core.redis.cache.HobbitRedis;
+import org.hobbit.core.redis.listener.TransactionCacheListener;
 import org.hobbit.core.redis.props.HobbitRedisProperties;
 import org.hobbit.core.redis.serializer.RedisKeySerializer;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -66,5 +67,10 @@ public class RedisTemplateConfiguration implements HobbitRedisSerializerConfigAb
   public HobbitRedis hobbitRedis(RedisTemplate<String, Object> redisTemplate,
       StringRedisTemplate stringRedisTemplate) {
     return new HobbitRedis(redisTemplate, stringRedisTemplate);
+  }
+
+  @Bean
+  public TransactionCacheListener transactionCacheListener(HobbitRedis hobbitRedis) {
+    return new TransactionCacheListener(hobbitRedis);
   }
 }
