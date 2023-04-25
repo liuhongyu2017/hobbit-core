@@ -13,10 +13,14 @@ public class TransactionCacheEvent extends ApplicationEvent {
   /**
    * 缓存 key
    */
-  private final String[] keys;
+  String cacheName;
+  String keyPrefix;
+  Object key;
 
-  public TransactionCacheEvent(Object source, String... keys) {
+  public TransactionCacheEvent(Object source, String cacheName, String keyPrefix, Object key) {
     super(source);
-    this.keys = keys;
+    this.cacheName = cacheName;
+    this.keyPrefix = keyPrefix;
+    this.key = key;
   }
 }

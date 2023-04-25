@@ -68,9 +68,4 @@ public class RedisTemplateConfiguration implements HobbitRedisSerializerConfigAb
       StringRedisTemplate stringRedisTemplate) {
     return new HobbitRedis(redisTemplate, stringRedisTemplate);
   }
-
-  @Bean
-  public TransactionCacheListener transactionCacheListener(HobbitRedis hobbitRedis) {
-    return new TransactionCacheListener(hobbitRedis);
-  }
 }
