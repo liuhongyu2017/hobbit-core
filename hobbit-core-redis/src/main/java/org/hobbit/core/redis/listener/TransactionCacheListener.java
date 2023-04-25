@@ -28,12 +28,7 @@ public class TransactionCacheListener {
    */
   @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
   public void clearCacheListenerBefore(TransactionCacheEvent event) {
-    String cacheName = event.getCacheName();
-    String keyPrefix = event.getKeyPrefix();
-    Object key = event.getKey();
-    if (!Func.hasEmpty(cacheName, keyPrefix, key)) {
-      cacheUtil.evict(cacheName, keyPrefix, key);
-    }
+    cacheUtil.evict(event.getCacheName(), event.getKeyPrefix(), event.getKey());
   }
 
   /**
@@ -41,11 +36,6 @@ public class TransactionCacheListener {
    */
   @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
   public void clearCacheListenerAfter(TransactionCacheEvent event) {
-    String cacheName = event.getCacheName();
-    String keyPrefix = event.getKeyPrefix();
-    Object key = event.getKey();
-    if (!Func.hasEmpty(cacheName, keyPrefix, key)) {
-      cacheUtil.evict(cacheName, keyPrefix, key);
-    }
+    cacheUtil.evict(event.getCacheName(), event.getKeyPrefix(), event.getKey());
   }
 }
