@@ -1,6 +1,7 @@
 package org.hobbit.core.redis.config;
 
 import org.hobbit.core.redis.cache.CacheUtil;
+import org.hobbit.core.redis.cache.RequestCache;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -20,5 +21,10 @@ public class CacheConfiguration {
   @Bean
   public CacheUtil cacheUtil(CacheManager cacheManager) {
     return new CacheUtil(cacheManager);
+  }
+
+  @Bean
+  public RequestCache requestCache() {
+    return new RequestCache();
   }
 }
