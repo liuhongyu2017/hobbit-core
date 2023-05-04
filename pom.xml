@@ -33,6 +33,7 @@
         <module>hobbit-core-jwt</module>
         <module>hobbit-core-redis</module>
         <module>hobbit-core-test</module>
+        <module>hobbit-core-mybatis</module>
     </modules>
 
     <parent>
