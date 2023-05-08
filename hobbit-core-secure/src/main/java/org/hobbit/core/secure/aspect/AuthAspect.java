@@ -53,7 +53,10 @@ public class AuthAspect implements ApplicationContextAware {
       "@annotation(org.hobbit.core.secure.annotation.PreAuth) || " +
           "@within(org.hobbit.core.secure.annotation.PreAuth)"
   )
-  public Object preAuth(ProceedingJoinPoint point) {
+  public Object preAuth(ProceedingJoinPoint point) throws Throwable {
+    if (handleAuth(point)) {
+      return point.proceed();
+    }
     throw new SecureException(ResultCode.UN_AUTHORIZED);
   }
 
