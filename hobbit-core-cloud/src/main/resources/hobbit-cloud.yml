@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    openfeign:
+      # openFeign GZIP压缩
+      compression:
+        request:
+          mime-types: text/xml,application/xml,application/json
+          min-request-size: 2048
+          enabled: true
+        response:
+          enabled: true
+    # 负载均衡器缓存
+    loadbalancer:
+      cache:
+        enabled: true
+        caffeine:
+          spec: initialCapacity=500,expireAfterWrite=5s

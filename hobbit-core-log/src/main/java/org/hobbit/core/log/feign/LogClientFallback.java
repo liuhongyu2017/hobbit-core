@@ -5,11 +5,13 @@ import org.hobbit.core.log.model.LogApi;
 import org.hobbit.core.log.model.LogError;
 import org.hobbit.core.log.model.LogUsual;
 import org.hobbit.core.tool.api.R;
+import org.springframework.stereotype.Component;
 
 /**
  * @author lhy
  * @version 1.0.0 2023/4/19
  */
+@Component
 @Slf4j
 public class LogClientFallback implements ILogClient {
 

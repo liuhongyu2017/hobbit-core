@@ -33,3 +33,7 @@ spring:
     restart:
       log-condition-evaluation-delta: false
 
+# 关闭 actuator
+management:
+  endpoints:
+    enabled-by-default: false

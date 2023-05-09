@@ -34,6 +34,7 @@
         <module>hobbit-core-redis</module>
         <module>hobbit-core-test</module>
         <module>hobbit-core-mybatis</module>
+        <module>hobbit-core-swagger</module>
     </modules>
 
     <parent>
