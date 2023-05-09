@@ -11,6 +11,10 @@ public interface AppConstant {
    */
   String APPLICATION_VERSION = "1.0.0-SNAPSHOT";
   /**
+   * 基础包
+   */
+  String BASE_PACKAGES = "org.hobbit";
+  /**
    * 开发环境
    */
   String DEV_CODE = "dev";

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hobbit.core.redis.cache.CacheUtil;
 import org.hobbit.core.tool.utils.Func;
+import org.hobbit.core.tool.utils.StringUtil;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
@@ -28,7 +29,7 @@ public class TransactionCacheListener {
    */
   @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
   public void clearCacheListenerBefore(TransactionCacheEvent event) {
-    cacheUtil.evict(event.getCacheName(), event.getKeyPrefix(), event.getKey());
+    clearCache(event);
   }
 
   /**
@@ -36,6 +37,19 @@ public class TransactionCacheListener {
    */
   @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
   public void clearCacheListenerAfter(TransactionCacheEvent event) {
-    cacheUtil.evict(event.getCacheName(), event.getKeyPrefix(), event.getKey());
+    clearCache(event);
+  }
+
+  private void clearCache(TransactionCacheEvent event) {
+    String cacheName = event.getCacheName();
+    String keyPrefix = event.getKeyPrefix();
+    Object key = event.getKey();
+    if (StringUtil.isNotBlank(cacheName)) {
+      if (StringUtil.isNoneBlank(keyPrefix, Func.toStr(key))) {
+        cacheUtil.evict(cacheName, keyPrefix, key);
+      } else {
+        cacheUtil.clear(cacheName);
+      }
+    }
   }
 }

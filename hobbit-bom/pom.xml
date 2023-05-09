@@ -22,7 +22,7 @@
         <spring.boot.client.admin.version>2.7.1</spring.boot.client.admin.version>
         <alibaba.cloud.version>2022.0.0.0-RC2</alibaba.cloud.version>
         <alibaba.seata.version>1.5.2</alibaba.seata.version>
-        <alibaba.nacos.version>2.1.0</alibaba.nacos.version>
+        <alibaba.nacos.version>2.2.2</alibaba.nacos.version>
         <mica.version>3.0.1</mica.version>
         <logback.version>6.2</logback.version>
         <spring.cloud.openfeign.version>4.0.2</spring.cloud.openfeign.version>
