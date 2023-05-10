@@ -23,4 +23,9 @@ public class TransactionCacheEvent extends ApplicationEvent {
     this.keyPrefix = keyPrefix;
     this.key = key;
   }
+
+  public TransactionCacheEvent(Object source, String cacheName) {
+    super(source);
+    this.cacheName = cacheName;
+  }
 }
