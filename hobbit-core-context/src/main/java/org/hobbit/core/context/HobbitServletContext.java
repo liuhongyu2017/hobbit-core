@@ -34,11 +34,6 @@ public class HobbitServletContext implements HobbitContext {
   }
 
   @Override
-  public String getTenantId() {
-    return get(contextProperties.getHeaders().getTenantId());
-  }
-
-  @Override
   public String get(String ctxKey) {
     HttpHeaders headers = ThreadLocalUtil.getIfAbsent(HobbitConstant.CONTEXT_KEY,
         httpHeadersGetter::get);

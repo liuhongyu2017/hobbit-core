@@ -102,63 +102,58 @@ public class JwtUtil {
   /**
    * 获取保存在redis的token
    *
-   * @param tenantId    租户id
    * @param userId      用户id
    * @param accessToken token
    * @return accessToken
    */
-  public static String getAccessToken(String tenantId, String userId, String accessToken) {
+  public static String getAccessToken(String userId, String accessToken) {
     return String.valueOf(
-        getRedisTemplate().opsForValue().get(getAccessTokenKey(tenantId, userId, accessToken)));
+        getRedisTemplate().opsForValue().get(getAccessTokenKey(userId, accessToken)));
   }
 
   /**
    * 添加token至redis
    *
-   * @param tenantId    租户id
    * @param userId      用户id
    * @param accessToken token
    * @param expire      过期时间
    */
-  public static void addAccessToken(String tenantId, String userId, String accessToken,
+  public static void addAccessToken(String userId, String accessToken,
       int expire) {
-    getRedisTemplate().delete(getAccessTokenKey(tenantId, userId, accessToken));
+    getRedisTemplate().delete(getAccessTokenKey(userId, accessToken));
     getRedisTemplate().opsForValue()
-        .set(getAccessTokenKey(tenantId, userId, accessToken), accessToken, expire,
+        .set(getAccessTokenKey(userId, accessToken), accessToken, expire,
             TimeUnit.SECONDS);
   }
 
   /**
    * 删除保存在redis的token
    *
-   * @param tenantId 租户id
-   * @param userId   用户id
+   * @param userId 用户id
    */
-  public static void removeAccessToken(String tenantId, String userId) {
-    removeAccessToken(tenantId, userId, null);
+  public static void removeAccessToken(String userId) {
+    removeAccessToken(userId, null);
   }
 
   /**
    * 删除保存在redis的token
    *
-   * @param tenantId    租户id
    * @param userId      用户id
    * @param accessToken token
    */
-  public static void removeAccessToken(String tenantId, String userId, String accessToken) {
-    getRedisTemplate().delete(getAccessTokenKey(tenantId, userId, accessToken));
+  public static void removeAccessToken(String userId, String accessToken) {
+    getRedisTemplate().delete(getAccessTokenKey(userId, accessToken));
   }
 
   /**
    * 获取token索引
    *
-   * @param tenantId    租户id
    * @param userId      用户id
    * @param accessToken token
    * @return token索引
    */
-  public static String getAccessTokenKey(String tenantId, String userId, String accessToken) {
-    String key = tenantId.concat(":").concat(TOKEN_CACHE).concat("::").concat(TOKEN_KEY);
+  public static String getAccessTokenKey(String userId, String accessToken) {
+    String key = TOKEN_CACHE.concat("::").concat(TOKEN_KEY);
     if (getJwtProperties().getSingle() || StringUtils.hasLength(accessToken)) {
       return key.concat(userId);
     } else {

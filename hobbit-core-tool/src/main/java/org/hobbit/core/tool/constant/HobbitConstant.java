@@ -39,11 +39,6 @@ public interface HobbitConstant {
   String MDC_ACCOUNT_ID_KEY = "accountId";
 
   /**
-   * mdc tenant id key
-   */
-  String MDC_TENANT_ID_KEY = "tenantId";
-
-  /**
    * 角色前缀
    */
   String SECURITY_ROLE_PREFIX = "ROLE_";
@@ -57,11 +52,6 @@ public interface HobbitConstant {
    * 主键字段get方法
    */
   String DB_PRIMARY_KEY_METHOD = "getId";
-
-  /**
-   * 租户字段名
-   */
-  String DB_TENANT_KEY = "tenantId";
 
   /**
    * 租户字段get方法

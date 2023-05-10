@@ -39,11 +39,6 @@ public class HobbitUser implements Serializable {
   @ApiModelProperty(hidden = true)
   private String nickName;
   /**
-   * 租户ID
-   */
-  @ApiModelProperty(hidden = true)
-  private String tenantId;
-  /**
    * 第三方认证ID
    */
   @ApiModelProperty(hidden = true)

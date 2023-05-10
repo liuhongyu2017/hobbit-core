@@ -39,10 +39,6 @@ public class HobbitContextProperties {
      */
     private String accountId = "Hobbit-AccountId";
     /**
-     * 用于 聚合层 向调用层传递租户id 的请求头，默认：Hobbit-TenantId
-     */
-    private String tenantId = "Hobbit-TenantId";
-    /**
      * 自定义 RestTemplate 和 Feign 透传到下层的 Headers 名称列表
      */
     private List<String> allowed = Arrays.asList("X-Real-IP", "x-forwarded-for", "version",
@@ -59,7 +55,6 @@ public class HobbitContextProperties {
     List<String> headerList = new ArrayList<>();
     headerList.add(headers.getRequestId());
     headerList.add(headers.getAccountId());
-    headerList.add(headers.getTenantId());
     headerList.addAll(headers.getAllowed());
     return headerList;
   }

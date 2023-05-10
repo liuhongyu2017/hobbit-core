@@ -36,7 +36,6 @@ public class AuthUtil {
   private final static String POST_ID = TokenConstant.POST_ID;
   private final static String ROLE_ID = TokenConstant.ROLE_ID;
   private final static String ROLE_NAME = TokenConstant.ROLE_NAME;
-  private final static String TENANT_ID = TokenConstant.TENANT_ID;
   private final static String OAUTH_ID = TokenConstant.OAUTH_ID;
   private final static String CLIENT_ID = TokenConstant.CLIENT_ID;
   private final static String DETAIL = TokenConstant.DETAIL;
@@ -91,7 +90,6 @@ public class AuthUtil {
     }
     String clientId = Func.toStr(claims.get(AuthUtil.CLIENT_ID));
     Long userId = Func.toLong(claims.get(AuthUtil.USER_ID));
-    String tenantId = Func.toStr(claims.get(AuthUtil.TENANT_ID));
     String oauthId = Func.toStr(claims.get(AuthUtil.OAUTH_ID));
     String deptId = Func.toStrWithEmpty(claims.get(AuthUtil.DEPT_ID), StringPool.MINUS_ONE);
     String postId = Func.toStrWithEmpty(claims.get(AuthUtil.POST_ID), StringPool.MINUS_ONE);
@@ -104,7 +102,6 @@ public class AuthUtil {
     HobbitUser HobbitUser = new HobbitUser();
     HobbitUser.setClientId(clientId);
     HobbitUser.setUserId(userId);
-    HobbitUser.setTenantId(tenantId);
     HobbitUser.setOauthId(oauthId);
     HobbitUser.setAccount(account);
     HobbitUser.setDeptId(deptId);
@@ -274,30 +271,7 @@ public class AuthUtil {
   }
 
   /**
-   * 获取租户ID
-   *
-   * @return tenantId
-   */
-  public static String getTenantId() {
-    HobbitUser user = getUser();
-    return (null == user) ? StringPool.EMPTY : user.getTenantId();
-  }
-
-  /**
-   * 获取租户ID
-   *
-   * @param request request
-   * @return tenantId
-   */
-  public static String getTenantId(HttpServletRequest request) {
-    HobbitUser user = getUser(request);
-    return (null == user) ? StringPool.EMPTY : user.getTenantId();
-  }
-
-  /**
    * 获取第三方认证ID
-   *
-   * @return tenantId
    */
   public static String getOauthId() {
     HobbitUser user = getUser();
@@ -308,7 +282,6 @@ public class AuthUtil {
    * 获取第三方认证ID
    *
    * @param request request
-   * @return tenantId
    */
   public static String getOauthId(HttpServletRequest request) {
     HobbitUser user = getUser(request);
@@ -380,9 +353,8 @@ public class AuthUtil {
     }
     // 判断 Token 状态
     if (ObjectUtil.isNotEmpty(claims) && getJwtProperties().getState()) {
-      String tenantId = Func.toStr(claims.get(AuthUtil.TENANT_ID));
       String userId = Func.toStr(claims.get(AuthUtil.USER_ID));
-      String accessToken = JwtUtil.getAccessToken(tenantId, userId, token);
+      String accessToken = JwtUtil.getAccessToken(userId, token);
       if (!token.equalsIgnoreCase(accessToken)) {
         return null;
       }

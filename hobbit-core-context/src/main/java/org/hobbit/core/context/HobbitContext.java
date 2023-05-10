@@ -28,14 +28,6 @@ public interface HobbitContext {
   String getAccountId();
 
   /**
-   * 获取租户id
-   *
-   * @return 租户id
-   */
-  @Nullable
-  String getTenantId();
-
-  /**
    * 获取上下文中的数据
    *
    * @param ctxKey 上下文的key

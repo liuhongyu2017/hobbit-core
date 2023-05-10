@@ -23,7 +23,6 @@ public interface TokenConstant {
   String POST_ID = "post_id";
   String ROLE_ID = "role_id";
   String ROLE_NAME = "role_name";
-  String TENANT_ID = "tenant_id";
   String OAUTH_ID = "oauth_id";
   String CLIENT_ID = "client_id";
   String DETAIL = "detail";

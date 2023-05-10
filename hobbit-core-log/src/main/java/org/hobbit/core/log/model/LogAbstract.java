@@ -25,10 +25,6 @@ public class LogAbstract implements Serializable {
   @TableId(value = "id", type = IdType.ASSIGN_ID)
   protected Long id;
   /**
-   * 租户ID
-   */
-  private String tenantId;
-  /**
    * 服务ID
    */
   protected String serviceId;

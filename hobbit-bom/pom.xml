@@ -106,6 +106,11 @@
                 <artifactId>hobbit-core-swagger</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <groupId>org.hobbit</groupId>
+                <artifactId>hobbit-core-cloud</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
             <!-- google guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
