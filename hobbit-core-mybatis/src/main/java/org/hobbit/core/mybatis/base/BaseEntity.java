@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import lombok.Data;
 import org.hobbit.core.tool.utils.DateUtil;
@@ -50,7 +51,7 @@ public class BaseEntity implements Serializable {
   @DateTimeFormat(pattern = DateUtil.PATTERN_DATETIME)
   @JsonFormat(pattern = DateUtil.PATTERN_DATETIME)
   @ApiModelProperty(value = "创建时间")
-  private Date createTime;
+  private LocalDateTime createTime;
 
   /**
    * 更新人
@@ -65,7 +66,7 @@ public class BaseEntity implements Serializable {
   @DateTimeFormat(pattern = DateUtil.PATTERN_DATETIME)
   @JsonFormat(pattern = DateUtil.PATTERN_DATETIME)
   @ApiModelProperty(value = "更新时间")
-  private Date updateTime;
+  private LocalDateTime updateTime;
 
   /**
    * 状态[1:正常]
@@ -78,5 +79,5 @@ public class BaseEntity implements Serializable {
    */
   @TableLogic
   @ApiModelProperty(value = "是否已删除")
-  private Integer isDeleted;
+  private Integer deleted;
 }

@@ -2,9 +2,9 @@ package org.hobbit.core.mybatis.base;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import lombok.SneakyThrows;
 import org.hobbit.core.auth.HobbitUser;
@@ -73,7 +73,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
       if (user != null) {
         entity.setUpdateUser(user.getUserId());
       }
-      entity.setUpdateTime(DateUtil.now());
+      entity.setUpdateTime(LocalDateTime.now());
       entity.setId(id);
       list.add(entity);
     });
@@ -89,7 +89,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
       if (user != null) {
         entity.setUpdateUser(user.getUserId());
       }
-      entity.setUpdateTime(DateUtil.now());
+      entity.setUpdateTime(LocalDateTime.now());
       entity.setId(id);
       entity.setStatus(status);
       list.add(entity);
@@ -100,7 +100,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
   @SneakyThrows
   private void resolveEntity(T entity) {
     HobbitUser user = AuthUtil.getUser();
-    Date now = DateUtil.now();
+    LocalDateTime now = LocalDateTime.now();
     if (entity.getId() == null) {
       // 处理新增逻辑
       if (user != null) {
@@ -118,6 +118,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
     }
     // 处理通用逻辑
     entity.setUpdateTime(now);
-    entity.setIsDeleted(HobbitConstant.DB_NOT_DELETED);
+    entity.setDeleted(HobbitConstant.DB_NOT_DELETED);
   }
 }

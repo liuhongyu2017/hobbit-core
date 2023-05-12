@@ -12,6 +12,12 @@ import org.hobbit.core.tool.support.Kv;
 @Data
 public class HobbitUser implements Serializable {
 
+  @ApiModelProperty(hidden = true)
+  private String accessToken;
+
+  @ApiModelProperty(hidden = true)
+  private String refreshToken;
+
   /**
    * 客户端id
    */
@@ -32,17 +38,12 @@ public class HobbitUser implements Serializable {
    * 用户名
    */
   @ApiModelProperty(hidden = true)
-  private String userName;
+  private String realName;
   /**
    * 昵称
    */
   @ApiModelProperty(hidden = true)
   private String nickName;
-  /**
-   * 第三方认证ID
-   */
-  @ApiModelProperty(hidden = true)
-  private String oauthId;
   /**
    * 部门id
    */

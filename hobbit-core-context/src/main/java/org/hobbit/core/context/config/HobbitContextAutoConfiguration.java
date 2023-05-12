@@ -5,10 +5,12 @@ import org.hobbit.core.context.HobbitHttpHeadersGetter;
 import org.hobbit.core.context.HobbitServletContext;
 import org.hobbit.core.context.ServletHttpHeadersGetter;
 import org.hobbit.core.context.props.HobbitContextProperties;
+import org.hobbit.core.launch.constant.AppConstant;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
@@ -18,6 +20,7 @@ import org.springframework.core.annotation.Order;
  * @author lhy
  * @version 1.0.0 2022/12/4
  */
+@ComponentScan(AppConstant.BASE_PACKAGES)
 @AutoConfiguration
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @EnableConfigurationProperties(HobbitContextProperties.class)

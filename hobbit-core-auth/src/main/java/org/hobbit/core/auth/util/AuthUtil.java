@@ -29,7 +29,7 @@ public class AuthUtil {
 
   private final static String HEADER = TokenConstant.HEADER;
   private final static String ACCOUNT = TokenConstant.ACCOUNT;
-  private final static String USER_NAME = TokenConstant.USER_NAME;
+  private final static String REAL_NAME = TokenConstant.REAL_NAME;
   private final static String NICK_NAME = TokenConstant.NICK_NAME;
   private final static String USER_ID = TokenConstant.USER_ID;
   private final static String DEPT_ID = TokenConstant.DEPT_ID;
@@ -96,19 +96,17 @@ public class AuthUtil {
     String roleId = Func.toStrWithEmpty(claims.get(AuthUtil.ROLE_ID), StringPool.MINUS_ONE);
     String account = Func.toStr(claims.get(AuthUtil.ACCOUNT));
     String roleName = Func.toStr(claims.get(AuthUtil.ROLE_NAME));
-    String userName = Func.toStr(claims.get(AuthUtil.USER_NAME));
+    String realName = Func.toStr(claims.get(AuthUtil.REAL_NAME));
     String nickName = Func.toStr(claims.get(AuthUtil.NICK_NAME));
     Kv detail = Kv.create().setAll((Map<? extends String, ?>) claims.get(AuthUtil.DETAIL));
     HobbitUser HobbitUser = new HobbitUser();
     HobbitUser.setClientId(clientId);
     HobbitUser.setUserId(userId);
-    HobbitUser.setOauthId(oauthId);
     HobbitUser.setAccount(account);
     HobbitUser.setDeptId(deptId);
     HobbitUser.setPostId(postId);
     HobbitUser.setRoleId(roleId);
-    HobbitUser.setRoleName(roleName);
-    HobbitUser.setUserName(userName);
+    HobbitUser.setRealName(realName);
     HobbitUser.setNickName(nickName);
     HobbitUser.setDetail(detail);
     return HobbitUser;
@@ -121,6 +119,16 @@ public class AuthUtil {
    */
   public static boolean isAdministrator() {
     return StringUtil.containsAny(getUserRole(), RoleConstant.ADMINISTRATOR);
+  }
+
+  /**
+   * 获取角色名
+   *
+   * @return roleName
+   */
+  public static String getUserRole() {
+    HobbitUser user = getUser();
+    return null == user ? "" : user.getRoleName();
   }
 
   /**
@@ -172,7 +180,7 @@ public class AuthUtil {
    */
   public static String getUserName() {
     HobbitUser user = getUser();
-    return (null == user) ? StringPool.EMPTY : user.getUserName();
+    return (null == user) ? StringPool.EMPTY : user.getRealName();
   }
 
   /**
@@ -183,7 +191,7 @@ public class AuthUtil {
    */
   public static String getUserName(HttpServletRequest request) {
     HobbitUser user = getUser(request);
-    return (null == user) ? StringPool.EMPTY : user.getUserName();
+    return (null == user) ? StringPool.EMPTY : user.getRealName();
   }
 
   /**
@@ -247,45 +255,6 @@ public class AuthUtil {
   public static String getPostId(HttpServletRequest request) {
     HobbitUser user = getUser(request);
     return (null == user) ? StringPool.EMPTY : user.getPostId();
-  }
-
-  /**
-   * 获取用户角色
-   *
-   * @return userName
-   */
-  public static String getUserRole() {
-    HobbitUser user = getUser();
-    return (null == user) ? StringPool.EMPTY : user.getRoleName();
-  }
-
-  /**
-   * 获取用角色
-   *
-   * @param request request
-   * @return userName
-   */
-  public static String getUserRole(HttpServletRequest request) {
-    HobbitUser user = getUser(request);
-    return (null == user) ? StringPool.EMPTY : user.getRoleName();
-  }
-
-  /**
-   * 获取第三方认证ID
-   */
-  public static String getOauthId() {
-    HobbitUser user = getUser();
-    return (null == user) ? StringPool.EMPTY : user.getOauthId();
-  }
-
-  /**
-   * 获取第三方认证ID
-   *
-   * @param request request
-   */
-  public static String getOauthId(HttpServletRequest request) {
-    HobbitUser user = getUser(request);
-    return (null == user) ? StringPool.EMPTY : user.getOauthId();
   }
 
   /**
