@@ -1,0 +1,8 @@
+${AnsiColor.BLUE}                     _    _       _     _     _ _
+${AnsiColor.BLUE}                    | |  | |     | |   | |   (_) |
+${AnsiColor.BLUE}                    | |__| | ___ | |__ | |__  _| |_
+${AnsiColor.BLUE}                    |  __  |/ _ \| '_ \| '_ \| | __|
+${AnsiColor.BLUE}                    | |  | | (_) | |_) | |_) | | |_
+${AnsiColor.BLUE}                    |_|  |_|\___/|_.__/|_.__/|_|\__|
+
+${AnsiColor.BLUE}:: Hobbit ${hobbit.service.version} :: ${spring.application.name}:${AnsiColor.RED}${hobbit.env}${AnsiColor.BLUE} :: Running SpringBoot ${spring-boot.version} :: ${AnsiColor.BRIGHT_BLACK}
