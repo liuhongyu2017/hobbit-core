@@ -24,10 +24,8 @@
         <module>hobbit-core-launch</module>
         <module>hobbit-core-context</module>
         <module>hobbit-core-tool</module>
-        <module>hobbit-core-boot</module>
         <module>hobbit-core-log</module>
         <module>hobbit-core-auth</module>
-        <module>hobbit-core-cloud</module>
         <module>hobbit-core-loadbalancer</module>
         <module>hobbit-core-secure</module>
         <module>hobbit-core-jwt</module>

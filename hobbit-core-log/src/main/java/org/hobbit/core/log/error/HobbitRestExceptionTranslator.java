@@ -77,4 +77,18 @@ public class HobbitRestExceptionTranslator {
         (Func.isEmpty(e.getMessage()) ? ResultCode.INTERNAL_SERVER_ERROR.getMessage()
             : e.getMessage()));
   }
+
+  @ExceptionHandler(RuntimeException.class)
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+  public R<?> handleError(RuntimeException e) {
+    log.error("服务器异常", e);
+    if (properties.getErrorLog()) {
+      //发送服务异常事件
+      ErrorLogPublisher.publishEvent(e, UrlUtil.getPath(
+          Objects.requireNonNull(WebUtil.getRequest()).getRequestURI()));
+    }
+    return R.fail(ResultCode.INTERNAL_SERVER_ERROR,
+        (Func.isEmpty(e.getMessage()) ? ResultCode.INTERNAL_SERVER_ERROR.getMessage()
+            : e.getMessage()));
+  }
 }

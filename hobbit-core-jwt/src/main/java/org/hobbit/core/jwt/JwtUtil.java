@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.concurrent.TimeUnit;
+import lombok.Getter;
 import org.hobbit.core.jwt.props.JwtProperties;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
@@ -30,25 +31,19 @@ public class JwtUtil {
   /**
    * jwt配置
    */
+  @Getter
   private static JwtProperties jwtProperties;
 
   /**
    * redis工具
    */
+  @Getter
   private static RedisTemplate<String, Object> redisTemplate;
-
-  public static JwtProperties getJwtProperties() {
-    return jwtProperties;
-  }
 
   public static void setJwtProperties(JwtProperties properties) {
     if (JwtUtil.jwtProperties == null) {
       JwtUtil.jwtProperties = properties;
     }
-  }
-
-  public static RedisTemplate<String, Object> getRedisTemplate() {
-    return redisTemplate;
   }
 
   public static void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {

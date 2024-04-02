@@ -5,7 +5,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.hobbit.core.auth.exception.SecureException;
+import org.hobbit.core.log.exception.SecureException;
 import org.hobbit.core.secure.annotation.PreAuth;
 import org.hobbit.core.secure.auth.AuthFun;
 import org.hobbit.core.tool.api.ResultCode;

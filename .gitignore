@@ -159,5 +159,5 @@ local.properties
 #.project
 
 /.idea/
-target
+target/
 *.iml
