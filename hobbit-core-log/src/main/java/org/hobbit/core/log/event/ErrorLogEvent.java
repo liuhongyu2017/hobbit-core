@@ -11,6 +11,8 @@ import org.springframework.context.ApplicationEvent;
  */
 public class ErrorLogEvent extends ApplicationEvent {
 
+  private static final long serialVersionUID = 1L;
+
   public ErrorLogEvent(Map<String, Object> source) {
     super(source);
   }

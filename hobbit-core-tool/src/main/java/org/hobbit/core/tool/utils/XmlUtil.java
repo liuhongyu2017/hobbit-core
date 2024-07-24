@@ -267,7 +267,6 @@ public class XmlUtil {
     preventedXXE = true;
   }
 
-  @SuppressWarnings("SameReturnValue")
   private static XPathFactory getXPathFactory() {
     return XmlHelperHolder.xPathFactory;
   }

@@ -1,7 +1,5 @@
 package org.hobbit.core.log.config;
 
-import jakarta.servlet.Servlet;
-import lombok.RequiredArgsConstructor;
 import org.hobbit.core.log.error.HobbitErrorAttributes;
 import org.hobbit.core.log.error.HobbitErrorController;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -16,7 +14,10 @@ import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.DispatcherServlet;
+import jakarta.servlet.Servlet;
+import lombok.RequiredArgsConstructor;
 
 /**
  * 统一异常处理
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.DispatcherServlet;
  */
 @RequiredArgsConstructor
 @ConditionalOnWebApplication
+@Configuration
 @AutoConfigureBefore(ErrorMvcAutoConfiguration.class)
 @ConditionalOnClass({Servlet.class, DispatcherServlet.class})
 public class HobbitErrorMvcAutoConfiguration {

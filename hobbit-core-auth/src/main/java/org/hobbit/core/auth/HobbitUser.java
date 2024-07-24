@@ -1,9 +1,9 @@
 package org.hobbit.core.auth;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-import lombok.Data;
 import org.hobbit.core.tool.support.Kv;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * @author lhy
@@ -11,6 +11,8 @@ import org.hobbit.core.tool.support.Kv;
  */
 @Data
 public class HobbitUser implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   /**
    * 客户端id

@@ -16,7 +16,6 @@ import org.hobbit.core.tool.utils.StringUtil;
  * @author lhy
  * @version 1.0.0 2023/4/21
  */
-@SuppressWarnings("SameReturnValue")
 public class AuthFun {
 
   /**

@@ -11,6 +11,7 @@ import org.springframework.lang.Nullable;
  */
 public class Lazy<T> implements Supplier<T>, Serializable {
 
+  private static final long serialVersionUID = 1L;
   @Nullable
   private transient volatile Supplier<? extends T> supplier;
   @Nullable

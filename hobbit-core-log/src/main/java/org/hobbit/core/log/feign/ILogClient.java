@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author lhy
  * @version 1.0.0 2023/4/11
  */
-@SuppressWarnings("UnusedReturnValue")
 @FeignClient(
     value = AppConstant.APPLICATION_LOG_NAME,
     fallback = LogClientFallback.class

@@ -1,15 +1,15 @@
 package org.hobbit.core.log.model;
 
+import java.io.Serializable;
+import java.util.Date;
+import org.hobbit.core.tool.utils.DateUtil;
+import org.springframework.format.annotation.DateTimeFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
-import org.hobbit.core.tool.utils.DateUtil;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author lhy
@@ -17,6 +17,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Data
 public class LogAbstract implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   /**
    * 主键id

@@ -13,6 +13,8 @@ import lombok.EqualsAndHashCode;
 @TableName("hobbit_log_api")
 public class LogApi extends LogAbstract {
 
+  private static final long serialVersionUID = 1L;
+
   /**
    * 日志类型
    */

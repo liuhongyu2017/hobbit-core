@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
  */
 public class SuffixFileFilter implements FileFilter, Serializable {
 
+  private static final long serialVersionUID = 1L;
   private final String[] suffixes;
 
   public SuffixFileFilter(final String suffix) {

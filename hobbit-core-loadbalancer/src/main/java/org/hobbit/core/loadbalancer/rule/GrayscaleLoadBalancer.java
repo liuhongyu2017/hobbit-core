@@ -3,8 +3,6 @@ package org.hobbit.core.loadbalancer.rule;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.hobbit.core.loadbalancer.props.HobbitLoadBalancerProperties;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cloud.client.ServiceInstance;
@@ -17,6 +15,8 @@ import org.springframework.cloud.loadbalancer.core.ReactorServiceInstanceLoadBal
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.PatternMatchUtils;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 /**
@@ -33,7 +33,7 @@ public class GrayscaleLoadBalancer implements ReactorServiceInstanceLoadBalancer
   private final HobbitLoadBalancerProperties hobbitLoadBalancerProperties;
 
   @Override
-  public Mono<Response<ServiceInstance>> choose(Request request) {
+  public Mono<Response<ServiceInstance>> choose(@SuppressWarnings("rawtypes") Request request) {
     ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
         .getIfAvailable(NoopServiceInstanceListSupplier::new);
     return supplier.get(request).next()

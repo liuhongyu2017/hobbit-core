@@ -1,8 +1,8 @@
 package org.hobbit.core.log.exception;
 
-import lombok.Getter;
 import org.hobbit.core.tool.api.IResultCode;
 import org.hobbit.core.tool.api.ResultCode;
+import lombok.Getter;
 
 /**
  * Secure 异常
@@ -13,6 +13,7 @@ import org.hobbit.core.tool.api.ResultCode;
 @Getter
 public class SecureException extends RuntimeException {
 
+  private static final long serialVersionUID = 1L;
   private final IResultCode resultCode;
 
   public SecureException(String message) {

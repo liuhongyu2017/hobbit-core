@@ -1,8 +1,8 @@
 package org.hobbit.core.auth;
 
+import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
 import lombok.Data;
 
 /**
@@ -12,6 +12,8 @@ import lombok.Data;
 @Data
 @ApiModel(description = "认证信息")
 public class AuthInfo implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   @ApiModelProperty(value = "令牌")
   private String accessToken;

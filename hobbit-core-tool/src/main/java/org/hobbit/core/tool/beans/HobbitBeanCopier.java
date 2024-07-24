@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import lombok.Setter;
 import org.hobbit.core.tool.utils.BeanUtil;
 import org.hobbit.core.tool.utils.ClassUtil;
 import org.hobbit.core.tool.utils.ReflectUtil;
@@ -31,6 +30,7 @@ import org.springframework.cglib.core.Signature;
 import org.springframework.cglib.core.TypeUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.util.ClassUtils;
+import lombok.Setter;
 
 /**
  * spring cglib 魔改
@@ -285,7 +285,7 @@ public abstract class HobbitBeanCopier {
     }
 
     @Override
-    protected Object firstInstance(Class type) {
+    protected Object firstInstance(@SuppressWarnings("rawtypes") Class type) {
       return BeanUtil.newInstance(type);
     }
 

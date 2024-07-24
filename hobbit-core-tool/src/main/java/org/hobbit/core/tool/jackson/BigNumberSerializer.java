@@ -1,10 +1,10 @@
 package org.hobbit.core.tool.jackson;
 
+import java.io.IOException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
 import com.fasterxml.jackson.databind.ser.std.NumberSerializer;
-import java.io.IOException;
 
 /**
  * 大数值序列化，避免超过js的精度，造成精度丢失
@@ -14,6 +14,7 @@ import java.io.IOException;
 @JacksonStdImpl
 public class BigNumberSerializer extends NumberSerializer {
 
+  private static final long serialVersionUID = 1L;
   /**
    * js 最大值为 Math.pow(2, 53)，十进制为：9007199254740992
    */

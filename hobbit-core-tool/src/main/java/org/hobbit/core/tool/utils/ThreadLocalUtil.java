@@ -55,7 +55,6 @@ public class ThreadLocalUtil {
    * @return 被放入的值
    * @see Map#put(Object, Object)
    */
-  @SuppressWarnings("UnusedReturnValue")
   public static <T> T put(String key, T value) {
     LOCAL.get().put(key, value);
     return value;

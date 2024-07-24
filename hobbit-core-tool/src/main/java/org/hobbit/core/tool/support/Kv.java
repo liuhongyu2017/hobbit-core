@@ -15,6 +15,8 @@ import org.springframework.util.LinkedCaseInsensitiveMap;
  */
 public class Kv extends LinkedCaseInsensitiveMap<Object> {
 
+  private static final long serialVersionUID = 1L;
+
   private Kv() {
     super();
   }
@@ -39,7 +41,6 @@ public class Kv extends LinkedCaseInsensitiveMap<Object> {
    * @param value 值
    * @return 本身
    */
-  @SuppressWarnings("UnusedReturnValue")
   public Kv set(String attr, Object value) {
     this.put(attr, value);
     return this;

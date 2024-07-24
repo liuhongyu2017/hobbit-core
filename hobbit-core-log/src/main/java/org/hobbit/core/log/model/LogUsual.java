@@ -15,6 +15,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class LogUsual extends LogAbstract {
 
+  private static final long serialVersionUID = 1L;
+
   /**
    * 日志级别
    */

@@ -4,8 +4,6 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.hobbit.core.tool.function.CheckedFunction;
 import org.hobbit.core.tool.utils.ClassUtil;
 import org.hobbit.core.tool.utils.ConvertUtil;
@@ -14,6 +12,8 @@ import org.hobbit.core.tool.utils.Unchecked;
 import org.springframework.cglib.core.Converter;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.lang.Nullable;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 组合 spring cglib Converter 和 spring ConversionService
@@ -31,14 +31,15 @@ public class HobbitConverter implements Converter {
   /**
    * cglib convert
    *
-   * @param value     源对象属性
-   * @param target    目标对象属性类
+   * @param value 源对象属性
+   * @param target 目标对象属性类
    * @param fieldName 目标的field名，原为 set 方法名，HobbitBeanCopier 里做了更改
    * @return {Object}
    */
   @Override
   @Nullable
-  public Object convert(Object value, Class target, final Object fieldName) {
+  public Object convert(Object value, @SuppressWarnings("rawtypes") Class target,
+      final Object fieldName) {
     if (value == null) {
       return null;
     }
@@ -47,14 +48,14 @@ public class HobbitConverter implements Converter {
       return value;
     }
     try {
-      TypeDescriptor targetDescriptor = HobbitConverter.getTypeDescriptor(targetClazz,
-          (String) fieldName);
+      TypeDescriptor targetDescriptor =
+          HobbitConverter.getTypeDescriptor(targetClazz, (String) fieldName);
       // 1. 判断 sourceClazz 为 Map
       if (Map.class.isAssignableFrom(sourceClazz)) {
         return ConvertUtil.convert(value, targetDescriptor);
       } else {
-        TypeDescriptor sourceDescriptor = HobbitConverter.getTypeDescriptor(sourceClazz,
-            (String) fieldName);
+        TypeDescriptor sourceDescriptor =
+            HobbitConverter.getTypeDescriptor(sourceClazz, (String) fieldName);
         return ConvertUtil.convert(value, sourceDescriptor, targetDescriptor);
       }
     } catch (Throwable e) {

@@ -1,9 +1,9 @@
 package org.hobbit.core.tool.jackson;
 
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 /**
  * 大整数序列化为 String 字符串，避免浏览器丢失精度
@@ -17,6 +17,7 @@ import java.math.BigInteger;
  */
 public class HobbitNumberModule extends SimpleModule {
 
+  private static final long serialVersionUID = 1L;
   public static final HobbitNumberModule INSTANCE = new HobbitNumberModule();
 
   public HobbitNumberModule() {

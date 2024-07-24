@@ -1387,7 +1387,6 @@ public class StringUtil extends org.springframework.util.StringUtils {
    * @param strs 初始字符串列表
    * @return {String}Builder对象
    */
-  @SuppressWarnings("UnusedReturnValue")
   public static StringBuilder appendBuilder(StringBuilder sb, CharSequence... strs) {
     for (CharSequence str : strs) {
       sb.append(str);

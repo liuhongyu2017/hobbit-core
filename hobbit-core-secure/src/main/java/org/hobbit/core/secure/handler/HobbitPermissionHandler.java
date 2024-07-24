@@ -1,7 +1,7 @@
 package org.hobbit.core.secure.handler;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
+import lombok.RequiredArgsConstructor;
 
 /**
  * @author lhy
@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class HobbitPermissionHandler implements IPermissionHandler{
 
   private static final String SCOPE_CACHE_CODE = "apiScope:code:";
-
   private final JdbcTemplate jdbcTemplate;
 
 

@@ -1,11 +1,11 @@
 package org.hobbit.core.tool.beans;
 
 import java.security.ProtectionDomain;
-import lombok.Setter;
 import org.springframework.asm.ClassVisitor;
 import org.springframework.cglib.beans.BeanMap;
 import org.springframework.cglib.core.AbstractClassGenerator;
 import org.springframework.cglib.core.ReflectUtils;
+import lombok.Setter;
 
 /**
  * 重写 cglib BeanMap，支持链式bean
@@ -108,7 +108,7 @@ public abstract class HobbitBeanMap extends BeanMap {
     }
 
     @Override
-    protected Object firstInstance(Class type) {
+    protected Object firstInstance(@SuppressWarnings("rawtypes") Class type) {
       return ((BeanMap) ReflectUtils.newInstance(type)).newInstance(bean);
     }
 
