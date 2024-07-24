@@ -161,3 +161,8 @@ local.properties
 /.idea/
 target/
 *.iml
+.project
+.classpath
+.DS_Store
+hobbit-core-cloud/src/main/java/org/hobbit/core/cloud/.DS_Store
+hobbit-core-cloud/src/main/java/org/hobbit/core/.DS_Store
