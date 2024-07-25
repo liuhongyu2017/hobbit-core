@@ -6,16 +6,23 @@ import lombok.RequiredArgsConstructor;
 /**
  * 生成的随机数类型
  *
- * @author L.cm
+ * @author lhy
+ * @version 1.0.0 2024/07/24
  */
 @Getter
 @RequiredArgsConstructor
 public enum RandomType {
   /**
-   * INT STRING ALL
+   * Int
    */
   INT(RandomType.INT_STR),
+  /**
+   * String
+   */
   STRING(RandomType.STR_STR),
+  /**
+   * All
+   */
   ALL(RandomType.ALL_STR);
 
   private final String factor;
