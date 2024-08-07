@@ -22,7 +22,7 @@ import org.springframework.web.util.HtmlUtils;
  * 继承自Spring util的工具类，减少jar依赖
  *
  * @author lhy
- * @version 1.0.0 2024/07/31
+ * @version 1.0.0 2024/8/7
  */
 public class StringUtil extends org.springframework.util.StringUtils {
 
@@ -315,14 +315,16 @@ public class StringUtil extends org.springframework.util.StringUtils {
    */
   public static String randomUUID() {
     ThreadLocalRandom random = ThreadLocalRandom.current();
-    return new UUID(random.nextLong(), random.nextLong()).toString().replace(StringPool.DASH,
+    long mostSigBits = random.nextLong();
+    long leastSigBits = random.nextLong();
+    return new UUID(mostSigBits, leastSigBits).toString().replace(StringPool.DASH,
         StringPool.EMPTY);
   }
 
   /**
    * 转义HTML用于安全过滤
    *
-   * @param html html
+   * @param html
    * @return {String}
    */
   public static String escapeHtml(String html) {
