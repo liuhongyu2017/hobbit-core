@@ -3,7 +3,8 @@ package org.hobbit.core.tool.utils;
 /**
  * 静态 String 池
  *
- * @author L.cm
+ * @author lhy
+ * @version 1.0.0 2024/8/7
  */
 public interface StringPool {
 
