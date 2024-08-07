@@ -12,11 +12,12 @@ import org.springframework.util.ObjectUtils;
 /**
  * 字符串切分器
  *
- * @author Looly
+ * @author lhy
+ * @version 1.0.0 2024/07/31
  */
 public class StrSplitter {
 
-  //---------------------------------------------------------------------------------------------- Split by char
+  // ------------------- Split by char -------------------
 
   /**
    * 切分字符串路径，仅支持Unix分界符：/
@@ -43,7 +44,7 @@ public class StrSplitter {
   /**
    * 切分字符串路径，仅支持Unix分界符：/
    *
-   * @param str   被切分的字符串
+   * @param str 被切分的字符串
    * @param limit 限制分片数
    * @return 切分后的集合
    * @since 3.0.8
@@ -55,7 +56,7 @@ public class StrSplitter {
   /**
    * 切分字符串路径，仅支持Unix分界符：/
    *
-   * @param str   被切分的字符串
+   * @param str 被切分的字符串
    * @param limit 限制分片数
    * @return 切分后的集合
    * @since 3.0.8
@@ -67,8 +68,8 @@ public class StrSplitter {
   /**
    * 切分字符串
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.2.1
@@ -80,9 +81,9 @@ public class StrSplitter {
   /**
    * 切分字符串
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
@@ -95,9 +96,9 @@ public class StrSplitter {
   /**
    * 切分字符串，大小写敏感，去除每个元素两边空白符
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
-   * @param limit       限制分片数，-1不限制
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
+   * @param limit 限制分片数，-1不限制
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
@@ -109,10 +110,10 @@ public class StrSplitter {
   /**
    * 切分字符串，大小写敏感
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
-   * @param limit       限制分片数，-1不限制
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
+   * @param limit 限制分片数，-1不限制
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
@@ -125,10 +126,10 @@ public class StrSplitter {
   /**
    * 切分字符串，忽略大小写
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
-   * @param limit       限制分片数，-1不限制
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
+   * @param limit 限制分片数，-1不限制
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.2.1
@@ -141,12 +142,12 @@ public class StrSplitter {
   /**
    * 切分字符串
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
-   * @param limit       限制分片数，-1不限制
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
+   * @param limit 限制分片数，-1不限制
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
-   * @param ignoreCase  是否忽略大小写
+   * @param ignoreCase 是否忽略大小写
    * @return 切分后的集合
    * @since 3.2.1
    */
@@ -167,7 +168,7 @@ public class StrSplitter {
         addToList(list, str.substring(start, i), isTrim, ignoreEmpty);
         start = i + 1;
 
-        //检查是否超出范围（最大允许limit-1个，剩下一个留给末尾字符串）
+        // 检查是否超出范围（最大允许limit-1个，剩下一个留给末尾字符串）
         if (limit > 0 && list.size() > limit - 2) {
           break;
         }
@@ -179,10 +180,10 @@ public class StrSplitter {
   /**
    * 切分字符串为字符串数组
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
-   * @param limit       限制分片数
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
+   * @param limit 限制分片数
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
@@ -192,14 +193,14 @@ public class StrSplitter {
     return toArray(split(str, separator, limit, isTrim, ignoreEmpty));
   }
 
-  //---------------------------------------------------------------------------------------------- Split by String
+  // ------------------- Split by String -------------------
 
   /**
    * 切分字符串，不忽略大小写
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符串
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符串
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
@@ -212,8 +213,8 @@ public class StrSplitter {
   /**
    * 切分字符串，去除每个元素两边空格，忽略大小写
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符串
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符串
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.2.1
@@ -225,10 +226,10 @@ public class StrSplitter {
   /**
    * 切分字符串，不忽略大小写
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符串
-   * @param limit       限制分片数
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符串
+   * @param limit 限制分片数
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
@@ -241,9 +242,9 @@ public class StrSplitter {
   /**
    * 切分字符串，去除每个元素两边空格，忽略大小写
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符串
-   * @param limit       限制分片数
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符串
+   * @param limit 限制分片数
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.2.1
@@ -256,10 +257,10 @@ public class StrSplitter {
   /**
    * 切分字符串，忽略大小写
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符串
-   * @param limit       限制分片数
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符串
+   * @param limit 限制分片数
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.2.1
@@ -272,9 +273,9 @@ public class StrSplitter {
   /**
    * 切分字符串，去除每个元素两边空格，忽略大小写
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符串
-   * @param limit       限制分片数
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符串
+   * @param limit 限制分片数
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.2.1
@@ -287,12 +288,12 @@ public class StrSplitter {
   /**
    * 切分字符串
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符串
-   * @param limit       限制分片数
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符串
+   * @param limit 限制分片数
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
-   * @param ignoreCase  是否忽略大小写
+   * @param ignoreCase 是否忽略大小写
    * @return 切分后的集合
    * @since 3.2.1
    */
@@ -322,7 +323,7 @@ public class StrSplitter {
         addToList(list, str.substring(start, i), isTrim, ignoreEmpty);
         start = i + separatorLen;
 
-        //检查是否超出范围（最大允许limit-1个，剩下一个留给末尾字符串）
+        // 检查是否超出范围（最大允许limit-1个，剩下一个留给末尾字符串）
         if (limit > 0 && list.size() > limit - 2) {
           break;
         }
@@ -336,10 +337,10 @@ public class StrSplitter {
   /**
    * 切分字符串为字符串数组
    *
-   * @param str         被切分的字符串
-   * @param separator   分隔符字符
-   * @param limit       限制分片数
-   * @param isTrim      是否去除切分字符串后每个元素两边的空格
+   * @param str 被切分的字符串
+   * @param separator 分隔符字符
+   * @param limit 限制分片数
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
    * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
@@ -349,12 +350,13 @@ public class StrSplitter {
     return toArray(split(str, separator, limit, isTrim, ignoreEmpty));
   }
 
-  //---------------------------------------------------------------------------------------------- Split by Whitespace
+  // ------------------- Split by Whitespace -------------------
 
   /**
-   * 使用空白符切分字符串<br> 切分后的字符串两边不包含空白符，空串或空白符串并不做为元素之一
+   * 使用空白符切分字符串<br>
+   * 切分后的字符串两边不包含空白符，空串或空白符串并不做为元素之一
    *
-   * @param str   被切分的字符串
+   * @param str 被切分的字符串
    * @param limit 限制分片数
    * @return 切分后的集合
    * @since 3.0.8
@@ -385,7 +387,7 @@ public class StrSplitter {
   /**
    * 切分字符串为字符串数组
    *
-   * @param str   被切分的字符串
+   * @param str 被切分的字符串
    * @param limit 限制分片数
    * @return 切分后的集合
    * @since 3.0.8
@@ -394,16 +396,16 @@ public class StrSplitter {
     return toArray(split(str, limit));
   }
 
-  //---------------------------------------------------------------------------------------------- Split by regex
+  // ------------------- Split by regex -------------------
 
   /**
    * 通过正则切分字符串
    *
-   * @param str              字符串
+   * @param str 字符串
    * @param separatorPattern 分隔符正则{@link Pattern}
-   * @param limit            限制分片数
-   * @param isTrim           是否去除切分字符串后每个元素两边的空格
-   * @param ignoreEmpty      是否忽略空串
+   * @param limit 限制分片数
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
+   * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
    */
@@ -438,11 +440,11 @@ public class StrSplitter {
   /**
    * 通过正则切分字符串为字符串数组
    *
-   * @param str              被切分的字符串
+   * @param str 被切分的字符串
    * @param separatorPattern 分隔符正则{@link Pattern}
-   * @param limit            限制分片数
-   * @param isTrim           是否去除切分字符串后每个元素两边的空格
-   * @param ignoreEmpty      是否忽略空串
+   * @param limit 限制分片数
+   * @param isTrim 是否去除切分字符串后每个元素两边的空格
+   * @param ignoreEmpty 是否忽略空串
    * @return 切分后的集合
    * @since 3.0.8
    */
@@ -451,7 +453,7 @@ public class StrSplitter {
     return toArray(split(str, separatorPattern, limit, isTrim, ignoreEmpty));
   }
 
-  //---------------------------------------------------------------------------------------------- Split by length
+  // ------------------- Split by length -------------------
 
   /**
    * 根据给定长度，将给定字符串截取为多个部分
@@ -479,14 +481,14 @@ public class StrSplitter {
     return strs;
   }
 
-  //---------------------------------------------------------------------------------------------------------- Private method start
+  // ------------------- Private method start -------------------
 
   /**
    * 将字符串加入List中
    *
-   * @param list        列表
-   * @param part        被加入的部分
-   * @param isTrim      是否去除两端空白符
+   * @param list 列表
+   * @param part 被加入的部分
+   * @param isTrim 是否去除两端空白符
    * @param ignoreEmpty 是否略过空字符串（空字符串不做为一个元素）
    * @return 列表
    */
@@ -510,5 +512,5 @@ public class StrSplitter {
   private static String[] toArray(List<String> list) {
     return list.toArray(new String[0]);
   }
-  //---------------------------------------------------------------------------------------------------------- Private method end
+  // ------------------- Private method end -------------------
 }

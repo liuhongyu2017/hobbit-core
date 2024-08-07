@@ -21,7 +21,8 @@ import org.springframework.web.util.HtmlUtils;
 /**
  * 继承自Spring util的工具类，减少jar依赖
  *
- * @author L.cm
+ * @author lhy
+ * @version 1.0.0 2024/07/31
  */
 public class StringUtil extends org.springframework.util.StringUtils {
 
